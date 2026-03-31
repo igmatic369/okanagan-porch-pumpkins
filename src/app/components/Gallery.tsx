@@ -1,0 +1,172 @@
+import { motion } from "motion/react";
+import { useState } from "react";
+import { X } from "lucide-react";
+import { Link } from "react-router";
+
+const photos = [
+  {
+    url: "https://images.unsplash.com/photo-1763333408689-3ec67351ac60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwYXJyYW5nZW1lbnQlMjBzdG9vcCUyMHN0ZXBzJTIwaG9tZXxlbnwxfHx8fDE3NzQ3Mzk1NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    alt: "Pumpkin arrangement on front steps",
+    label: "Classic Harvest Display",
+    span: "col-span-2 row-span-2",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1757181470751-b69ea4449ccf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMHB1bXBraW5zJTIwYXV0dW1uJTIwZGlzcGxheXxlbnwxfHx8fDE3NzQ3Mzk1NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    alt: "Colorful pumpkins display",
+    label: "Colourful Variety Mix",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1696787708254-170f0362e6dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYWxsJTIwcHVtcGtpbiUyMGhhcnZlc3QlMjBhcnJhbmdlbWVudCUyMGRvb3JzdGVwfGVufDF8fHx8MTc3NDczOTU0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+    alt: "Fall pumpkin harvest arrangement",
+    label: "Grand Harvest Package",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1721934081800-29ec9103722e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHB1bXBraW5zJTIwZWxlZ2FudCUyMGF1dHVtbiUyMGRlY29yfGVufDF8fHx8MTc3NDczOTU1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+    alt: "White pumpkins elegant decor",
+    label: "Elegant White Collection",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1762568682714-5ee72514e883?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYWxsb3dlZW4lMjBmYWxsJTIwc2Vhc29uYWwlMjBob21lJTIwZXh0ZXJpb3IlMjBkZWNvcmF0aW9ufGVufDF8fHx8MTc3NDczOTU1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+    alt: "Fall seasonal home exterior",
+    label: "Bountiful Package",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1762527645208-84b0d3e792cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdXR1bW4lMjBmcm9udCUyMGRvb3IlMjB3cmVhdGglMjBmYWxsJTIwZGVjb3J8ZW58MXx8fHwxNzc0NzM5NTUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    alt: "Autumn front door wreath",
+    label: "Front Door Styling",
+    span: "col-span-1 row-span-1",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1730331775349-4290c03a34e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwY2FydmluZyUyMGphY2slMjBvJTIwbGFudGVybiUyMGNyZWF0aXZlfGVufDF8fHx8MTc3NDczOTU2OHww&ixlib=rb-4.1.0&q=80&w=1080",
+    alt: "Creative jack o lantern",
+    label: "Carving Add-On",
+    span: "col-span-1 row-span-1",
+  },
+];
+
+export function Gallery() {
+  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+
+  return (
+    <section id="gallery" className="py-24 bg-amber-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-orange-600 font-semibold tracking-widest uppercase text-sm mb-3"
+            style={{ fontFamily: "'Lato', sans-serif" }}
+          >
+            Our Work
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-stone-900 mb-5"
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontWeight: 700,
+              lineHeight: 1.2,
+            }}
+          >
+            Porch Inspiration Gallery
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-stone-600 max-w-2xl mx-auto"
+            style={{ fontFamily: "'Lato', sans-serif", fontSize: "1.1rem", lineHeight: 1.7 }}
+          >
+            From cozy cottage stoops to grand entryways, see what we've created for Okanagan families just like yours.
+          </motion.p>
+        </div>
+
+        {/* Mosaic Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-[200px]">
+          {photos.map((photo, i) => (
+            <motion.div
+              key={photo.alt}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className={`${photo.span} relative overflow-hidden rounded-2xl cursor-pointer group shadow-md`}
+              onClick={() => setLightboxImg(photo.url)}
+            >
+              <img
+                src={photo.url}
+                alt={photo.alt}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <span
+                  className="text-white text-sm font-semibold"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
+                >
+                  {photo.label}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Lightbox */}
+        {lightboxImg && (
+          <div
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+            onClick={() => setLightboxImg(null)}
+          >
+            <button
+              className="absolute top-4 right-4 text-white hover:text-orange-400 transition-colors"
+              onClick={() => setLightboxImg(null)}
+            >
+              <X size={32} />
+            </button>
+            <img
+              src={lightboxImg}
+              alt="Gallery enlarged"
+              className="max-w-full max-h-[90vh] rounded-xl object-contain shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        )}
+
+        {/* CTA under gallery */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-10"
+        >
+          <p
+            className="text-stone-600 mb-4"
+            style={{ fontFamily: "'Lato', sans-serif" }}
+          >
+            Love what you see? Book your own display for Fall 2026!
+          </p>
+          <Link
+            to="/contact"
+            className="inline-block bg-orange-600 hover:bg-orange-500 text-white px-8 py-3.5 rounded-full font-bold transition-all duration-300 hover:shadow-lg hover:shadow-orange-600/30 hover:-translate-y-0.5"
+            style={{ fontFamily: "'Lato', sans-serif" }}
+          >
+            Book Your Display →
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
