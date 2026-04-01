@@ -11,7 +11,7 @@
     "year": "2026",
     "delivery_start": "September 21",
     "delivery_end": "October 21",
-    "delivery_range": "September 21 – October 21, 2026",
+    "delivery_range": "September 21 â October 21, 2026",
     "pickup_window": "first two weeks of November"
   },
   "service_areas": [
@@ -19,11 +19,11 @@
     "West Kelowna"
   ],
   "delivery_windows": [
-    "September 21–27",
-    "September 28 – October 4",
-    "October 5–11",
-    "October 12–18",
-    "October 19–21 (last window)"
+    "September 21â27",
+    "September 28 â October 4",
+    "October 5â11",
+    "October 12â18",
+    "October 19â21 (last window)"
   ],
   "packages": [
     {
@@ -113,8 +113,8 @@
       "slug": "harvest-welcome",
       "name": "The Harvest Welcome",
       "price": "$1,449",
-      "tagline": "Stunning curb appeal — our sweet spot.",
-      "description": "A full, lush porch display with 53 pumpkins, gourds, and fall accents. This is our sweet spot — stunning curb appeal for any home.",
+      "tagline": "Stunning curb appeal â our sweet spot.",
+      "description": "A full, lush porch display with 53 pumpkins, gourds, and fall accents. This is our sweet spot â stunning curb appeal for any home.",
       "best_for": "Homeowners wanting a full, magazine-worthy display without going overboard.",
       "includes": [
         "53 assorted pumpkins & gourds",
@@ -171,7 +171,7 @@
       "pumpkin_breakdown": [
         {
           "quantity": 3,
-          "type": "Grand Prize pumpkins (jaw-dropping scale) — or 2 Grand Prize + 2 XL Jack-O'-Lanterns depending on porch size"
+          "type": "Grand Prize pumpkins (jaw-dropping scale) â or 2 Grand Prize + 2 XL Jack-O'-Lanterns depending on porch size"
         },
         {
           "quantity": 10,
@@ -210,7 +210,7 @@
       "price": "$949",
       "tagline": "The ultimate fall statement. Custom. Curated. Unforgettable.",
       "description": "The ultimate fall statement. A custom-curated display of 42 premium, hand-selected pumpkins arranged into a magazine-worthy porch transformation that turns heads all season long.",
-      "best_for": "Those who want a fully custom, premium display — quality and artistry over quantity.",
+      "best_for": "Those who want a fully custom, premium display â quality and artistry over quantity.",
       "includes": [
         "42 premium hand-selected pumpkins & gourds",
         "3 hay bales",
@@ -270,7 +270,7 @@
       "name": "Pumpkin Pick-Up & Composting",
       "tag": "Any Package",
       "price": "$99",
-      "description": "We'll swing by in early November to collect and compost your pumpkins — no mess, no fuss. Sit back and enjoy the last of fall.",
+      "description": "We'll swing by in early November to collect and compost your pumpkins â no mess, no fuss. Sit back and enjoy the last of fall.",
       "image": "https://images.unsplash.com/photo-1698516525766-657c02a0f51d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwYm94JTIwZGVsaXZlcnklMjBhdXR1bW4lMjBoYXJ2ZXN0JTIwc2Vhc29uYWx8ZW58MXx8fHwxNzc0NzQ0MDU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "restricted": false
     },
@@ -279,7 +279,7 @@
       "name": "24 Miniature Pumpkins",
       "tag": "Any Package",
       "price": "$75",
-      "description": "A beautiful basket of 24 mini pumpkins in a mix of colours — perfect for filling in gaps, lining steps, or decorating your indoor space.",
+      "description": "A beautiful basket of 24 mini pumpkins in a mix of colours â perfect for filling in gaps, lining steps, or decorating your indoor space.",
       "image": "https://images.unsplash.com/photo-1731316762799-3c8173674f7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pYXR1cmUlMjBzbWFsbCUyMHB1bXBraW5zJTIwYmFza2V0JTIwZmFsbHxlbnwxfHx8fDE3NzQ3NDQwNTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "restricted": false
     },
