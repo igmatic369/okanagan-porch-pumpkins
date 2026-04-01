@@ -2,19 +2,22 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router";
+import content from "../../content.json";
+
+const { business, season, service_areas } = content;
 
 const faqs = [
   {
     q: "When do you start delivering?",
-    a: "We begin deliveries on September 21st and continue through to October 21st. Peak delivery weeks (late September / early October) are our busiest, so we highly recommend booking early to secure your preferred delivery window!",
+    a: `We begin deliveries on ${season.delivery_start} and continue through to ${season.delivery_end}. Peak delivery weeks (late September / early October) are our busiest, so we highly recommend booking early to secure your preferred delivery window!`,
   },
   {
     q: "What areas of the Okanagan do you serve?",
-    a: "We currently deliver to Kelowna, West Kelowna, Lake Country, Peachland, Summerland, Penticton, Vernon, and Coldstream. If your area isn't listed, please reach out — we may be able to accommodate you!",
+    a: `We currently deliver to ${service_areas.join(", ")}. If your area isn't listed, please reach out — we may be able to accommodate you!`,
   },
   {
     q: "Do you pick everything up at the end of the season?",
-    a: "Yes! End-of-season pickup is included in every package. We schedule pickups during the first two weeks of November. We'll come by and collect all pumpkins, gourds, corn stalks, and any other materials we provided. Everything is composted responsibly. You don't have to do a thing!",
+    a: `Yes! End-of-season pickup is included in every package. We schedule pickups during the ${season.pickup_window}. We'll come by and collect all pumpkins, gourds, corn stalks, and any other materials we provided. Everything is composted responsibly. You don't have to do a thing!`,
   },
   {
     q: "How do I place an order?",
@@ -38,7 +41,7 @@ const faqs = [
   },
   {
     q: "Do you offer gift cards or gifting options?",
-    a: "What a thoughtful idea! Yes, we offer gift cards that can be purchased in any denomination. Give the gift of a stunning fall porch to someone you love! Contact us at hello@okanaganporchpumpkins.ca to purchase a gift card.",
+    a: `What a thoughtful idea! Yes, we offer gift cards that can be purchased in any denomination. Give the gift of a stunning fall porch to someone you love! Contact us at ${business.email} to purchase a gift card.`,
   },
   {
     q: "Do you set up the display, or do I have to arrange it myself?",

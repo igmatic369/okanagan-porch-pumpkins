@@ -1,19 +1,11 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
+import content from "../../content.json";
 
 const farmImage = "https://images.unsplash.com/photo-1603055971132-fbf2b0c2cd47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwcGF0Y2glMjBmYXJtJTIwcGlja2luZ3xlbnwxfHx8fDE3NzQ3Mzk1NTF8MA&ixlib=rb-4.1.0&q=80&w=1080";
 const okanaganImage = "https://images.unsplash.com/photo-1732159622597-aefade3499a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxva2FuYWdhbiUyMHZhbGxleSUyMGJyaXRpc2glMjBjb2x1bWJpYSUyMGxhbmRzY2FwZXxlbnwxfHx8fDE3NzQ3Mzk1NTN8MA&ixlib=rb-4.1.0&q=80&w=1080";
 
-const serviceAreas = [
-  "Kelowna",
-  "West Kelowna",
-  "Lake Country",
-  "Peachland",
-  "Summerland",
-  "Penticton",
-  "Vernon",
-  "Coldstream",
-];
+const { business, service_areas } = content;
 
 export function About() {
   return (
@@ -50,15 +42,9 @@ export function About() {
               className="space-y-4 text-stone-600"
               style={{ fontFamily: "'Lato', sans-serif", fontSize: "1rem", lineHeight: 1.8 }}
             >
-              <p>
-                Okanagan Porch Pumpkins started as a simple idea: why should decorating your porch for fall be stressful? We're a local family business right here in the Okanagan Valley — and like you, we adore this region's spectacular autumn season.
-              </p>
-              <p>
-                Every fall, the Okanagan transforms into a canvas of gold, amber, and deep red. We thought — what better way to celebrate that magic than by bringing the most beautiful pumpkins in the valley right to your front door?
-              </p>
-              <p>
-                We partner exclusively with local Okanagan farms to source the freshest, most gorgeous pumpkins of the season. By choosing us, you're not just getting a beautiful porch — you're supporting local farmers and keeping our community thriving.
-              </p>
+              {business.about_paragraphs.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
             </div>
 
             <div className="mt-8">
@@ -131,7 +117,7 @@ export function About() {
             We deliver across the beautiful Okanagan Valley. If your community isn't listed, reach out — we're always looking to expand!
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {serviceAreas.map((city) => (
+            {service_areas.map((city) => (
               <span
                 key={city}
                 className="bg-white border border-orange-200 text-stone-700 px-5 py-2.5 rounded-full text-sm shadow-sm hover:border-orange-400 hover:text-orange-600 transition-colors cursor-default"

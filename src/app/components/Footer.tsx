@@ -1,4 +1,7 @@
 import { Link } from "react-router";
+import content from "../../content.json";
+
+const { business, season, service_areas } = content;
 
 const quickLinks = [
   { label: "Home", to: "/" },
@@ -8,17 +11,6 @@ const quickLinks = [
   { label: "About Us", to: "/about" },
   { label: "FAQ", to: "/faq" },
   { label: "Order Now", to: "/contact" },
-];
-
-const serviceAreas = [
-  "Kelowna",
-  "West Kelowna",
-  "Lake Country",
-  "Peachland",
-  "Summerland",
-  "Penticton",
-  "Vernon",
-  "Coldstream",
 ];
 
 export function Footer() {
@@ -52,7 +44,7 @@ export function Footer() {
               className="text-stone-500 text-sm leading-relaxed mb-5"
               style={{ fontFamily: "'Lato', sans-serif" }}
             >
-              Locally owned &amp; operated in the beautiful Okanagan Valley. Bringing the magic of fall to your front door.
+              {business.description}
             </p>
           </div>
 
@@ -88,7 +80,7 @@ export function Footer() {
               Service Areas
             </h4>
             <ul className="space-y-2">
-              {serviceAreas.map((city) => (
+              {service_areas.map((city) => (
                 <li key={city}>
                   <span
                     className="text-stone-500 text-sm"
@@ -111,11 +103,11 @@ export function Footer() {
             </h4>
             <ul className="space-y-4">
               {[
-                { icon: "📧", label: "hello@okanaganporchpumpkins.ca" },
-                { icon: "📱", label: "(250) 555-PUMP" },
-                { icon: "📍", label: "Okanagan Valley, BC" },
-                { icon: "🕐", label: "Deliveries: Sept 21 – Oct 21" },
-                { icon: "♻️", label: "Pickup: First 2 weeks of November" },
+                { icon: "📧", label: business.email },
+                { icon: "📱", label: business.phone_display },
+                { icon: "📍", label: business.service_area },
+                { icon: "🕐", label: `Deliveries: ${season.delivery_range}` },
+                { icon: "♻️", label: `Pickup: ${season.pickup_window.charAt(0).toUpperCase() + season.pickup_window.slice(1)}` },
               ].map((item) => (
                 <li key={item.label} className="flex items-start gap-2">
                   <span className="text-sm mt-0.5">{item.icon}</span>
@@ -156,7 +148,7 @@ export function Footer() {
       <div className="border-t border-stone-800 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-stone-600">
           <p style={{ fontFamily: "'Lato', sans-serif" }}>
-            © 2026 Okanagan Porch Pumpkins. All rights reserved.
+            © {season.year} Okanagan Porch Pumpkins. All rights reserved.
           </p>
           <div className="flex gap-5" style={{ fontFamily: "'Lato', sans-serif" }}>
             <a href="#" className="hover:text-orange-400 transition-colors">Privacy Policy</a>

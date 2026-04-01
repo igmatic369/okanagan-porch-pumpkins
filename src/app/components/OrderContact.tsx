@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
 import content from "../../content.json";
 
-const packages = content.packages.map((p) => `${p.name} — Price TBD`);
+const packages = content.packages.map((p) => `${p.name} — ${p.price}`);
 const deliveryWindows = content.delivery_windows;
+const { business, season } = content;
 
 export function OrderContact() {
   const [submitted, setSubmitted] = useState(false);
@@ -72,9 +73,9 @@ export function OrderContact() {
             {/* Contact Info */}
             <div className="space-y-5">
               {[
-                { icon: "📧", label: "Email", value: "hello@okanaganporchpumpkins.ca" },
-                { icon: "📱", label: "Phone / Text", value: "(250) 555-PUMP" },
-                { icon: "📍", label: "Service Area", value: "Okanagan Valley, BC" },
+                { icon: "📧", label: "Email", value: business.email },
+                { icon: "📱", label: "Phone / Text", value: business.phone_display },
+                { icon: "📍", label: "Service Area", value: business.service_area },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl bg-stone-800 flex items-center justify-center text-xl flex-shrink-0">
@@ -110,7 +111,7 @@ export function OrderContact() {
                 className="text-amber-100"
                 style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.65 }}
               >
-                Delivery windows run from <strong>September 21 – October 21, 2026</strong>. End-of-season pickup is scheduled for the <strong>first two weeks of November</strong>. Book now to secure your preferred window!
+                Delivery windows run from <strong>{season.delivery_range}</strong>. End-of-season pickup is scheduled for the <strong>{season.pickup_window}</strong>. Book now to secure your preferred window!
               </p>
             </div>
           </motion.div>
