@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useReducer, useEffect } from 'react'
 import staticContent from '../../content.json'
 
 // Extend window type for the preview bridge global
@@ -10,23 +10,23 @@ declare global {
 
 /**
  * Returns content.json data.
- * In preview mode (?preview=true), the portal sends updated content via
- * postMessage → preview-bridge.js stores it in window.__PREVIEW_CONTENT__
- * and dispatches 'preview-content-changed'. This hook listens and re-renders.
- * Outside preview mode, always returns staticContent with zero overhead.
+ *
+ * In preview mode the portal keeps window.__PREVIEW_CONTENT__ up to date
+ * via postMessage. We read it directly on every render rather than caching
+ * it in useState — this ensures components that mount AFTER a content update
+ * (e.g. on React Router navigation) always get the latest value without
+ * needing to wait for another preview-content-changed event.
+ *
+ * The useReducer is used only to trigger re-renders when the bridge
+ * dispatches 'preview-content-changed' so existing components update too.
  */
 export function useContent() {
-  const [content, setContent] = useState<typeof staticContent>(
-    () => window.__PREVIEW_CONTENT__ ?? staticContent
-  )
+  const [, forceUpdate] = useReducer((n: number) => n + 1, 0)
 
   useEffect(() => {
-    function handler() {
-      setContent(window.__PREVIEW_CONTENT__ ?? staticContent)
-    }
-    window.addEventListener('preview-content-changed', handler)
-    return () => window.removeEventListener('preview-content-changed', handler)
+    window.addEventListener('preview-content-changed', forceUpdate)
+    return () => window.removeEventListener('preview-content-changed', forceUpdate)
   }, [])
 
-  return content
+  return window.__PREVIEW_CONTENT__ ?? staticContent
 }
