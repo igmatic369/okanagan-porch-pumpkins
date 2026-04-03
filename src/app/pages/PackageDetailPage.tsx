@@ -2,9 +2,10 @@ import { useParams, Link, Navigate } from "react-router";
 import { motion } from "motion/react";
 import { Check, ArrowLeft } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import content from "../../content.json";
+import { useContent } from "../hooks/useContent";
 
 export function PackageDetailPage() {
+  const content = useContent();
   const { slug } = useParams<{ slug: string }>();
   const pkg = content.packages.find((p) => p.slug === slug);
 
@@ -219,9 +220,9 @@ export function PackageDetailPage() {
                     className="text-stone-700 text-sm"
                     style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.6 }}
                   >
-                    Deliveries run <strong>{content.season.delivery_range}</strong>. End-of-season
+                    Deliveries run <strong data-content-key="season.delivery_range">{content.season.delivery_range}</strong>. End-of-season
                     pickup is available in the{" "}
-                    <strong>{content.season.pickup_window}</strong> (add-on).
+                    <strong data-content-key="season.pickup_window">{content.season.pickup_window}</strong> (add-on).
                   </p>
                 </div>
 

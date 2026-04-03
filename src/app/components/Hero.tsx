@@ -1,12 +1,13 @@
 import { motion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 import { Link, useNavigate } from "react-router";
-import content from "../../content.json";
+import { useContent } from "../hooks/useContent";
 
 const heroImage = "https://images.unsplash.com/photo-1760800327755-0b680db1cb4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2lucyUyMG9uJTIwcG9yY2glMjBhdXR1bW4lMjBkZWNvcmF0aW9ufGVufDF8fHx8MTc3NDczOTU0NXww&ixlib=rb-4.1.0&q=80&w=1080";
 
 export function Hero() {
   const navigate = useNavigate();
+  const content = useContent();
 
   return (
     <section
@@ -77,7 +78,7 @@ export function Hero() {
             lineHeight: 1.7,
           }}
         >
-          {content.business.hero_description}
+          <span data-content-key="business.hero_description">{content.business.hero_description}</span>
         </motion.p>
 
         {/* CTA Buttons */}

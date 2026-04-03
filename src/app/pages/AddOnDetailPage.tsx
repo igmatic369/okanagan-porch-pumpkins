@@ -2,9 +2,10 @@ import { useParams, Link, Navigate } from "react-router";
 import { motion } from "motion/react";
 import { ArrowLeft } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
-import content from "../../content.json";
+import { useContent } from "../hooks/useContent";
 
 export function AddOnDetailPage() {
+  const content = useContent();
   const { slug } = useParams<{ slug: string }>();
   const addon = content.addons.find((a) => a.slug === slug);
 

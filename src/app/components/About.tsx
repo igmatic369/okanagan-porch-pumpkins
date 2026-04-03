@@ -1,13 +1,13 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
-import content from "../../content.json";
+import { useContent } from "../hooks/useContent";
 
 const farmImage = "https://images.unsplash.com/photo-1603055971132-fbf2b0c2cd47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwcGF0Y2glMjBmYXJtJTIwcGlja2luZ3xlbnwxfHx8fDE3NzQ3Mzk1NTF8MA&ixlib=rb-4.1.0&q=80&w=1080";
 const okanaganImage = "https://images.unsplash.com/photo-1732159622597-aefade3499a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxva2FuYWdhbiUyMHZhbGxleSUyMGJyaXRpc2glMjBjb2x1bWJpYSUyMGxhbmRzY2FwZXxlbnwxfHx8fDE3NzQ3Mzk1NTN8MA&ixlib=rb-4.1.0&q=80&w=1080";
 
-const { business, service_areas } = content;
-
 export function About() {
+  const content = useContent();
+  const { business, service_areas } = content;
   return (
     <section id="about" className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

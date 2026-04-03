@@ -1,7 +1,5 @@
 import { Link } from "react-router";
-import content from "../../content.json";
-
-const { business, season, service_areas } = content;
+import { useContent } from "../hooks/useContent";
 
 const quickLinks = [
   { label: "Home", to: "/" },
@@ -14,6 +12,9 @@ const quickLinks = [
 ];
 
 export function Footer() {
+  const content = useContent();
+  const { business, season, service_areas } = content;
+
   return (
     <footer className="bg-stone-950 text-stone-400">
       {/* Main Footer */}
@@ -41,6 +42,7 @@ export function Footer() {
               </div>
             </div>
             <p
+              data-content-key="business.description"
               className="text-stone-500 text-sm leading-relaxed mb-5"
               style={{ fontFamily: "'Lato', sans-serif" }}
             >
@@ -102,23 +104,54 @@ export function Footer() {
               Get In Touch
             </h4>
             <ul className="space-y-4">
-              {[
-                { icon: "📧", label: business.email },
-                { icon: "📱", label: business.phone_display },
-                { icon: "📍", label: business.service_area },
-                { icon: "🕐", label: `Deliveries: ${season.delivery_range}` },
-                { icon: "♻️", label: `Pickup: ${season.pickup_window.charAt(0).toUpperCase() + season.pickup_window.slice(1)}` },
-              ].map((item) => (
-                <li key={item.label} className="flex items-start gap-2">
-                  <span className="text-sm mt-0.5">{item.icon}</span>
-                  <span
-                    className="text-stone-500 text-sm"
-                    style={{ fontFamily: "'Lato', sans-serif" }}
-                  >
-                    {item.label}
-                  </span>
-                </li>
-              ))}
+              <li className="flex items-start gap-2">
+                <span className="text-sm mt-0.5">📧</span>
+                <span
+                  data-content-key="business.email"
+                  className="text-stone-500 text-sm"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
+                >
+                  {business.email}
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-sm mt-0.5">📱</span>
+                <span
+                  data-content-key="business.phone_display"
+                  className="text-stone-500 text-sm"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
+                >
+                  {business.phone_display}
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-sm mt-0.5">📍</span>
+                <span
+                  data-content-key="business.service_area"
+                  className="text-stone-500 text-sm"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
+                >
+                  {business.service_area}
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-sm mt-0.5">🕐</span>
+                <span
+                  className="text-stone-500 text-sm"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
+                >
+                  {`Deliveries: ${season.delivery_range}`}
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-sm mt-0.5">♻️</span>
+                <span
+                  className="text-stone-500 text-sm"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
+                >
+                  {`Pickup: ${season.pickup_window.charAt(0).toUpperCase() + season.pickup_window.slice(1)}`}
+                </span>
+              </li>
             </ul>
 
             <div className="mt-6 pt-5 border-t border-stone-800">
@@ -148,7 +181,7 @@ export function Footer() {
       <div className="border-t border-stone-800 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-stone-600">
           <p style={{ fontFamily: "'Lato', sans-serif" }}>
-            © {season.year} Okanagan Porch Pumpkins. All rights reserved.
+            © <span data-content-key="season.year">{season.year}</span> Okanagan Porch Pumpkins. All rights reserved.
           </p>
           <div className="flex gap-5" style={{ fontFamily: "'Lato', sans-serif" }}>
             <a href="#" className="hover:text-orange-400 transition-colors">Privacy Policy</a>

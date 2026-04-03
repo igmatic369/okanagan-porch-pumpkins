@@ -1,13 +1,13 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
-import content from "../../content.json";
-
-const packages = content.packages.map((p) => `${p.name} — ${p.price}`);
-const deliveryWindows = content.delivery_windows;
-const { business, season } = content;
+import { useContent } from "../hooks/useContent";
 
 export function OrderContact() {
+  const content = useContent();
+  const packages = content.packages.map((p) => `${p.name} — ${p.price}`);
+  const deliveryWindows = content.delivery_windows;
+  const { business, season } = content;
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -72,31 +72,27 @@ export function OrderContact() {
 
             {/* Contact Info */}
             <div className="space-y-5">
-              {[
-                { icon: "📧", label: "Email", value: business.email },
-                { icon: "📱", label: "Phone / Text", value: business.phone_display },
-                { icon: "📍", label: "Service Area", value: business.service_area },
-              ].map((item) => (
-                <div key={item.label} className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-stone-800 flex items-center justify-center text-xl flex-shrink-0">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <div
-                      className="text-stone-400 text-xs uppercase tracking-wider"
-                      style={{ fontFamily: "'Lato', sans-serif" }}
-                    >
-                      {item.label}
-                    </div>
-                    <div
-                      className="text-amber-100 font-medium"
-                      style={{ fontFamily: "'Lato', sans-serif" }}
-                    >
-                      {item.value}
-                    </div>
-                  </div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-stone-800 flex items-center justify-center text-xl flex-shrink-0">📧</div>
+                <div>
+                  <div className="text-stone-400 text-xs uppercase tracking-wider" style={{ fontFamily: "'Lato', sans-serif" }}>Email</div>
+                  <div data-content-key="business.email" className="text-amber-100 font-medium" style={{ fontFamily: "'Lato', sans-serif" }}>{business.email}</div>
                 </div>
-              ))}
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-stone-800 flex items-center justify-center text-xl flex-shrink-0">📱</div>
+                <div>
+                  <div className="text-stone-400 text-xs uppercase tracking-wider" style={{ fontFamily: "'Lato', sans-serif" }}>Phone / Text</div>
+                  <div data-content-key="business.phone_display" className="text-amber-100 font-medium" style={{ fontFamily: "'Lato', sans-serif" }}>{business.phone_display}</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-stone-800 flex items-center justify-center text-xl flex-shrink-0">📍</div>
+                <div>
+                  <div className="text-stone-400 text-xs uppercase tracking-wider" style={{ fontFamily: "'Lato', sans-serif" }}>Service Area</div>
+                  <div data-content-key="business.service_area" className="text-amber-100 font-medium" style={{ fontFamily: "'Lato', sans-serif" }}>{business.service_area}</div>
+                </div>
+              </div>
             </div>
 
             {/* Season Banner */}
@@ -111,7 +107,7 @@ export function OrderContact() {
                 className="text-amber-100"
                 style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.65 }}
               >
-                Delivery windows run from <strong>{season.delivery_range}</strong>. End-of-season pickup is scheduled for the <strong>{season.pickup_window}</strong>. Book now to secure your preferred window!
+                Delivery windows run from <strong data-content-key="season.delivery_range">{season.delivery_range}</strong>. End-of-season pickup is scheduled for the <strong data-content-key="season.pickup_window">{season.pickup_window}</strong>. Book now to secure your preferred window!
               </p>
             </div>
           </motion.div>

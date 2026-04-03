@@ -2,54 +2,55 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router";
-import content from "../../content.json";
-
-const { business, season, service_areas } = content;
-
-const faqs = [
-  {
-    q: "When do you start delivering?",
-    a: `We begin deliveries on ${season.delivery_start} and continue through to ${season.delivery_end}. Peak delivery weeks (late September / early October) are our busiest, so we highly recommend booking early to secure your preferred delivery window!`,
-  },
-  {
-    q: "What areas of the Okanagan do you serve?",
-    a: `We currently deliver to ${service_areas.join(", ")}. If your area isn't listed, please reach out — we may be able to accommodate you!`,
-  },
-  {
-    q: "Do you pick everything up at the end of the season?",
-    a: `Yes! End-of-season pickup is included in every package. We schedule pickups during the ${season.pickup_window}. We'll come by and collect all pumpkins, gourds, corn stalks, and any other materials we provided. Everything is composted responsibly. You don't have to do a thing!`,
-  },
-  {
-    q: "How do I place an order?",
-    a: "Simply fill out our order form on the Contact page, choose your package, select a delivery window, and we'll confirm everything via email within 24 hours. Payment is collected at the time of booking.",
-  },
-  {
-    q: "Are your pumpkins locally grown?",
-    a: "Absolutely! We partner exclusively with local Okanagan farms. We take great pride in supporting our local agricultural community. Keeping it local means fresher pumpkins and a smaller carbon footprint!",
-  },
-  {
-    q: "Can I customize my arrangement?",
-    a: "Yes! If you have a specific vision in mind — particular colours, styles, or arrangement preferences — just let us know in the order notes or contact us directly. We love creating custom displays and will do our best to accommodate your vision.",
-  },
-  {
-    q: "What if a pumpkin goes bad or gets damaged?",
-    a: "While pumpkins are natural products and will eventually age, we use only the freshest, highest-quality pumpkins to ensure they last throughout the season. If a pumpkin deteriorates unusually quickly within the first 2 weeks, contact us and we'll replace it at no charge.",
-  },
-  {
-    q: "What if I need to cancel my order?",
-    a: "We understand that plans change! Cancellations made more than 7 days before your scheduled delivery receive a full refund. Cancellations within 7 days are eligible for a credit towards next year's booking.",
-  },
-  {
-    q: "Do you offer gift cards or gifting options?",
-    a: `What a thoughtful idea! Yes, we offer gift cards that can be purchased in any denomination. Give the gift of a stunning fall porch to someone you love! Contact us at ${business.email} to purchase a gift card.`,
-  },
-  {
-    q: "Do you set up the display, or do I have to arrange it myself?",
-    a: "We do everything! Our team delivers and professionally arranges your display right on your porch, steps, or entryway. You don't lift a finger. We style it beautifully so you can immediately enjoy the season.",
-  },
-];
+import { useContent } from "../hooks/useContent";
 
 export function FAQ() {
+  const content = useContent();
+  const { business, season, service_areas } = content;
+
+  const faqs = [
+    {
+      q: "When do you start delivering?",
+      a: `We begin deliveries on ${season.delivery_start} and continue through to ${season.delivery_end}. Peak delivery weeks (late September / early October) are our busiest, so we highly recommend booking early to secure your preferred delivery window!`,
+    },
+    {
+      q: "What areas of the Okanagan do you serve?",
+      a: `We currently deliver to ${service_areas.join(", ")}. If your area isn't listed, please reach out — we may be able to accommodate you!`,
+    },
+    {
+      q: "Do you pick everything up at the end of the season?",
+      a: `Yes! End-of-season pickup is included in every package. We schedule pickups during the ${season.pickup_window}. We'll come by and collect all pumpkins, gourds, corn stalks, and any other materials we provided. Everything is composted responsibly. You don't have to do a thing!`,
+    },
+    {
+      q: "How do I place an order?",
+      a: "Simply fill out our order form on the Contact page, choose your package, select a delivery window, and we'll confirm everything via email within 24 hours. Payment is collected at the time of booking.",
+    },
+    {
+      q: "Are your pumpkins locally grown?",
+      a: "Absolutely! We partner exclusively with local Okanagan farms. We take great pride in supporting our local agricultural community. Keeping it local means fresher pumpkins and a smaller carbon footprint!",
+    },
+    {
+      q: "Can I customize my arrangement?",
+      a: "Yes! If you have a specific vision in mind — particular colours, styles, or arrangement preferences — just let us know in the order notes or contact us directly. We love creating custom displays and will do our best to accommodate your vision.",
+    },
+    {
+      q: "What if a pumpkin goes bad or gets damaged?",
+      a: "While pumpkins are natural products and will eventually age, we use only the freshest, highest-quality pumpkins to ensure they last throughout the season. If a pumpkin deteriorates unusually quickly within the first 2 weeks, contact us and we'll replace it at no charge.",
+    },
+    {
+      q: "What if I need to cancel my order?",
+      a: "We understand that plans change! Cancellations made more than 7 days before your scheduled delivery receive a full refund. Cancellations within 7 days are eligible for a credit towards next year's booking.",
+    },
+    {
+      q: "Do you offer gift cards or gifting options?",
+      a: `What a thoughtful idea! Yes, we offer gift cards that can be purchased in any denomination. Give the gift of a stunning fall porch to someone you love! Contact us at ${business.email} to purchase a gift card.`,
+    },
+    {
+      q: "Do you set up the display, or do I have to arrange it myself?",
+      a: "We do everything! Our team delivers and professionally arranges your display right on your porch, steps, or entryway. You don't lift a finger. We style it beautifully so you can immediately enjoy the season.",
+    },
+  ];
+
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (

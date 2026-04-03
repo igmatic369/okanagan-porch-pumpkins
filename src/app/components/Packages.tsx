@@ -2,11 +2,14 @@ import { motion } from "motion/react";
 import { Check, Plus } from "lucide-react";
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import content from "../../content.json";
+import { useContent } from "../hooks/useContent";
+import type contentJson from "../../content.json";
 
-const { packages, addons } = content;
+type Package = (typeof contentJson)["packages"][number];
 
 export function Packages() {
+  const content = useContent();
+  const { packages, addons } = content;
   return (
     <section id="packages" className="py-24 bg-stone-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +23,7 @@ export function Packages() {
             className="text-orange-600 font-semibold tracking-widest uppercase text-sm mb-3"
             style={{ fontFamily: "'Lato', sans-serif" }}
           >
-            Fall {content.season.year} Pricing
+            Fall <span data-content-key="season.year">{content.season.year}</span> Pricing
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -46,7 +49,7 @@ export function Packages() {
             style={{ fontFamily: "'Lato', sans-serif", fontSize: "1.1rem", lineHeight: 1.7 }}
           >
             Five packages to suit every porch and budget. All pumpkins are locally sourced from
-            Okanagan farms and delivered between {content.season.delivery_range}.
+            Okanagan farms and delivered between <span data-content-key="season.delivery_range">{content.season.delivery_range}</span>.
           </motion.p>
         </div>
 
@@ -73,7 +76,7 @@ export function Packages() {
           className="text-center text-stone-500 text-sm mb-20"
           style={{ fontFamily: "'Lato', sans-serif" }}
         >
-          All prices in CAD. Delivery window: {content.season.delivery_range}. Service area excludes
+          All prices in CAD. Delivery window: <span data-content-key="season.delivery_range">{content.season.delivery_range}</span>. Service area excludes
           Osoyoos and Oliver.{" "}
           <Link to="/contact" className="text-orange-600 hover:underline">
             Contact us
@@ -219,7 +222,7 @@ function PackageCard({
   pkg,
   index,
 }: {
-  pkg: (typeof packages)[number];
+  pkg: Package;
   index: number;
 }) {
   return (
