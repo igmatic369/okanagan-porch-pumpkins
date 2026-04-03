@@ -165,6 +165,7 @@ export function Packages() {
                         fontSize: "1.05rem",
                         fontWeight: 700,
                       }}
+                      data-content-key={`addons.${i}.name`}
                     >
                       {addon.name}
                     </h3>
@@ -175,6 +176,7 @@ export function Packages() {
                         fontSize: "1.2rem",
                         fontWeight: 700,
                       }}
+                      data-content-key={`addons.${i}.price`}
                     >
                       {addon.price}
                     </span>
@@ -182,6 +184,7 @@ export function Packages() {
                   <p
                     className="text-stone-500 text-sm flex-1"
                     style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.6 }}
+                    data-content-key={`addons.${i}.description`}
                   >
                     {addon.description}
                   </p>
@@ -273,6 +276,7 @@ function PackageCard({
           <span
             className="text-white drop-shadow-lg"
             style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", fontWeight: 700 }}
+            data-content-key={`packages.${index}.price`}
           >
             {pkg.price}
           </span>
@@ -290,18 +294,21 @@ function PackageCard({
         <h3
           className="text-stone-900 mb-0.5"
           style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.25rem", fontWeight: 700 }}
+          data-content-key={`packages.${index}.name`}
         >
           {pkg.name}
         </h3>
         <p
           className="text-orange-600 text-sm mb-3"
           style={{ fontFamily: "'Lato', sans-serif", fontWeight: 600 }}
+          data-content-key={`packages.${index}.tagline`}
         >
           {pkg.tagline}
         </p>
         <p
           className="text-stone-600 text-sm mb-5"
           style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.65 }}
+          data-content-key={`packages.${index}.description`}
         >
           {pkg.description}
         </p>

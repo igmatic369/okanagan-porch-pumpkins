@@ -8,6 +8,7 @@ export function PackageDetailPage() {
   const content = useContent();
   const { slug } = useParams<{ slug: string }>();
   const pkg = content.packages.find((p) => p.slug === slug);
+  const pkgIndex = content.packages.findIndex((p) => p.slug === slug);
 
   if (!pkg) return <Navigate to="/packages" replace />;
 
@@ -60,10 +61,11 @@ export function PackageDetailPage() {
                   fontWeight: 700,
                   lineHeight: 1.2,
                 }}
+                data-content-key={`packages.${pkgIndex}.name`}
               >
                 {pkg.name}
               </h1>
-              <p className="text-orange-300 mt-1" style={{ fontFamily: "'Lato', sans-serif" }}>
+              <p className="text-orange-300 mt-1" style={{ fontFamily: "'Lato', sans-serif" }} data-content-key={`packages.${pkgIndex}.tagline`}>
                 {pkg.tagline}
               </p>
             </div>
@@ -101,6 +103,7 @@ export function PackageDetailPage() {
                 <p
                   className="text-stone-600 mb-6"
                   style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.75, fontSize: "1rem" }}
+                  data-content-key={`packages.${pkgIndex}.description`}
                 >
                   {pkg.description}
                 </p>
@@ -181,6 +184,7 @@ export function PackageDetailPage() {
                       fontSize: "2.5rem",
                       fontWeight: 700,
                     }}
+                    data-content-key={`packages.${pkgIndex}.price`}
                   >
                     {pkg.price}
                   </p>
@@ -203,6 +207,7 @@ export function PackageDetailPage() {
                   <p
                     className="text-stone-600 text-sm"
                     style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.7 }}
+                    data-content-key={`packages.${pkgIndex}.best_for`}
                   >
                     {pkg.best_for}
                   </p>

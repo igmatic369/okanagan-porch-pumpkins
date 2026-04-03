@@ -8,6 +8,7 @@ export function AddOnDetailPage() {
   const content = useContent();
   const { slug } = useParams<{ slug: string }>();
   const addon = content.addons.find((a) => a.slug === slug);
+  const addonIndex = content.addons.findIndex((a) => a.slug === slug);
 
   if (!addon) return <Navigate to="/packages" replace />;
 
@@ -71,6 +72,7 @@ export function AddOnDetailPage() {
                   fontWeight: 700,
                   lineHeight: 1.2,
                 }}
+                data-content-key={`addons.${addonIndex}.name`}
               >
                 {addon.name}
               </h1>
@@ -78,6 +80,7 @@ export function AddOnDetailPage() {
                 <p
                   className="text-orange-600"
                   style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.8rem", fontWeight: 700 }}
+                  data-content-key={`addons.${addonIndex}.price`}
                 >
                   {addon.price}
                 </p>
@@ -93,6 +96,7 @@ export function AddOnDetailPage() {
             <p
               className="text-stone-600 mb-8"
               style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.75, fontSize: "1rem" }}
+              data-content-key={`addons.${addonIndex}.description`}
             >
               {addon.description}
             </p>
