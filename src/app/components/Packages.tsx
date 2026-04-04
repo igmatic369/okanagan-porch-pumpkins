@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Check, Plus } from "lucide-react";
+import { Check } from "lucide-react";
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useContent } from "../hooks/useContent";
@@ -99,7 +99,6 @@ export function Packages() {
             className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold mb-4"
             style={{ fontFamily: "'Lato', sans-serif" }}
           >
-            <Plus size={16} />
             <span data-content-key="packages_section.addons_eyebrow">{packages_section.addons_eyebrow}</span>
           </motion.div>
           <motion.h2
