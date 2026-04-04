@@ -39,11 +39,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="inline-flex items-center gap-2 bg-orange-600/90 backdrop-blur-sm text-white px-5 py-2 rounded-full mb-8 border border-orange-400/30 shadow-lg"
         >
-          <span className="text-base">🎃</span>
           <span className="text-sm font-semibold tracking-wider uppercase" style={{ fontFamily: "'Lato', sans-serif" }} data-content-key="hero.badge">
             {content.hero.badge}
           </span>
-          <span className="text-base">🎃</span>
         </motion.div>
 
         {/* Main Headline */}

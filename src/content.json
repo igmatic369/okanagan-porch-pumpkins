@@ -1,6 +1,6 @@
 {
   "hero": {
-    "badge": "Now Booking for Fall 2026",
+    "badge": "🎃 Now Booking for Fall 2026 🎃",
     "headline_line1": "Bring the Magic of",
     "headline_highlight": "Fall",
     "headline_line2": "to Your Front Door",
@@ -137,7 +137,8 @@
     "confirm_note": "We'll confirm your order by email within 24 hours. Payment processed upon confirmation.",
     "success_heading": "Order Received!",
     "success_text": "We'll be in touch within 24 hours to confirm your delivery details. Get ready for the most beautiful porch on the block! 🎃",
-    "submit_another": "Submit Another Order"
+    "submit_another": "Submit Another Order",
+    "season_banner_text": "Delivery windows run from September 21 – October 21, 2026. End-of-season pickup is scheduled for the first two weeks of November. Book now to secure your preferred window!"
   },
   "about": {
     "eyebrow": "Our Story",
@@ -502,5 +503,11 @@
     "October 5–11",
     "October 12–18",
     "October 19–21 (last window)"
-  ]
+  ],
+  "footer": {
+    "copyright": "Okanagan Porch Pumpkins. All rights reserved.",
+    "privacy_link": "Privacy Policy",
+    "terms_link": "Terms of Service",
+    "tagline": "Made with 🎃 in the Okanagan"
+  }
 }

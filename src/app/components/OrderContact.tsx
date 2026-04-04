@@ -7,7 +7,7 @@ export function OrderContact() {
   const content = useContent();
   const packages = content.packages.map((p) => `${p.name} — ${p.price}`);
   const deliveryWindows = content.delivery_windows;
-  const { business, season, contact } = content;
+  const { business, contact } = content;
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -110,8 +110,9 @@ export function OrderContact() {
               <p
                 className="text-amber-100"
                 style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.65 }}
+                data-content-key="contact.season_banner_text"
               >
-                Delivery windows run from <strong data-content-key="season.delivery_range">{season.delivery_range}</strong>. End-of-season pickup is scheduled for the <strong data-content-key="season.pickup_window">{season.pickup_window}</strong>. Book now to secure your preferred window!
+                {contact.season_banner_text}
               </p>
             </div>
           </motion.div>

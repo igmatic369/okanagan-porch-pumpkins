@@ -13,7 +13,7 @@ const quickLinks = [
 
 export function Footer() {
   const content = useContent();
-  const { business, season, service_areas } = content;
+  const { business, season, service_areas, footer } = content;
 
   return (
     <footer className="bg-stone-950 text-stone-400">
@@ -181,14 +181,15 @@ export function Footer() {
       <div className="border-t border-stone-800 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-stone-600">
           <p style={{ fontFamily: "'Lato', sans-serif" }}>
-            © <span data-content-key="season.year">{season.year}</span> Okanagan Porch Pumpkins. All rights reserved.
+            © <span data-content-key="season.year">{season.year}</span>{" "}
+            <span data-content-key="footer.copyright">{footer.copyright}</span>
           </p>
           <div className="flex gap-5" style={{ fontFamily: "'Lato', sans-serif" }}>
-            <a href="#" className="hover:text-orange-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-orange-400 transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-orange-400 transition-colors" data-content-key="footer.privacy_link">{footer.privacy_link}</a>
+            <a href="#" className="hover:text-orange-400 transition-colors" data-content-key="footer.terms_link">{footer.terms_link}</a>
           </div>
-          <p style={{ fontFamily: "'Lato', sans-serif" }}>
-            Made with 🎃 in the Okanagan
+          <p style={{ fontFamily: "'Lato', sans-serif" }} data-content-key="footer.tagline">
+            {footer.tagline}
           </p>
         </div>
       </div>
