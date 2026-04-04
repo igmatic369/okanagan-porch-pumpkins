@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { X } from "lucide-react";
 import { Link } from "react-router";
+import { useContent } from "../hooks/useContent";
 
 const photos = [
   {
@@ -50,6 +51,8 @@ const photos = [
 
 export function Gallery() {
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+  const content = useContent();
+  const { gallery } = content;
 
   return (
     <section id="gallery" className="py-24 bg-amber-50">
@@ -63,8 +66,9 @@ export function Gallery() {
             transition={{ duration: 0.5 }}
             className="text-orange-600 font-semibold tracking-widest uppercase text-sm mb-3"
             style={{ fontFamily: "'Lato', sans-serif" }}
+            data-content-key="gallery.eyebrow"
           >
-            Our Work
+            {gallery.eyebrow}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -78,8 +82,9 @@ export function Gallery() {
               fontWeight: 700,
               lineHeight: 1.2,
             }}
+            data-content-key="gallery.headline"
           >
-            Porch Inspiration Gallery
+            {gallery.headline}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -88,8 +93,9 @@ export function Gallery() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-stone-600 max-w-2xl mx-auto"
             style={{ fontFamily: "'Lato', sans-serif", fontSize: "1.1rem", lineHeight: 1.7 }}
+            data-content-key="gallery.subtitle"
           >
-            From cozy cottage stoops to grand entryways, see what we've created for Okanagan families just like yours.
+            {gallery.subtitle}
           </motion.p>
         </div>
 
@@ -155,15 +161,17 @@ export function Gallery() {
           <p
             className="text-stone-600 mb-4"
             style={{ fontFamily: "'Lato', sans-serif" }}
+            data-content-key="gallery.cta_text"
           >
-            Love what you see? Book your own display for Fall 2026!
+            {gallery.cta_text}
           </p>
           <Link
             to="/contact"
             className="inline-block bg-orange-600 hover:bg-orange-500 text-white px-8 py-3.5 rounded-full font-bold transition-all duration-300 hover:shadow-lg hover:shadow-orange-600/30 hover:-translate-y-0.5"
             style={{ fontFamily: "'Lato', sans-serif" }}
+            data-content-key="gallery.cta_button"
           >
-            Book Your Display →
+            {gallery.cta_button}
           </Link>
         </motion.div>
       </div>

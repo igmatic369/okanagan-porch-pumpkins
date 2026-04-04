@@ -40,8 +40,8 @@ export function Hero() {
           className="inline-flex items-center gap-2 bg-orange-600/90 backdrop-blur-sm text-white px-5 py-2 rounded-full mb-8 border border-orange-400/30 shadow-lg"
         >
           <span className="text-base">🎃</span>
-          <span className="text-sm font-semibold tracking-wider uppercase" style={{ fontFamily: "'Lato', sans-serif" }}>
-            Now Booking for Fall 2026
+          <span className="text-sm font-semibold tracking-wider uppercase" style={{ fontFamily: "'Lato', sans-serif" }} data-content-key="hero.badge">
+            {content.hero.badge}
           </span>
           <span className="text-base">🎃</span>
         </motion.div>
@@ -60,10 +60,10 @@ export function Hero() {
             textShadow: "0 2px 20px rgba(0,0,0,0.5)",
           }}
         >
-          Bring the Magic of{" "}
-          <span className="text-orange-400 italic">Fall</span>
+          <span data-content-key="hero.headline_line1">{content.hero.headline_line1}</span>{" "}
+          <span className="text-orange-400 italic" data-content-key="hero.headline_highlight">{content.hero.headline_highlight}</span>
           <br />
-          to Your Front Door
+          <span data-content-key="hero.headline_line2">{content.hero.headline_line2}</span>
         </motion.h1>
 
         {/* Subheadline */}
@@ -92,15 +92,17 @@ export function Hero() {
             to="/packages"
             className="bg-orange-600 hover:bg-orange-500 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-orange-600/40 hover:-translate-y-1 inline-block"
             style={{ fontFamily: "'Lato', sans-serif" }}
+            data-content-key="hero.cta_primary"
           >
-            Shop Packages
+            {content.hero.cta_primary}
           </Link>
           <Link
             to="/how-it-works"
             className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border border-white/30 px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:-translate-y-1 inline-block"
             style={{ fontFamily: "'Lato', sans-serif" }}
+            data-content-key="hero.cta_secondary"
           >
-            How It Works
+            {content.hero.cta_secondary}
           </Link>
         </motion.div>
       </div>

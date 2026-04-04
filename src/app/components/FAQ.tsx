@@ -6,51 +6,7 @@ import { useContent } from "../hooks/useContent";
 
 export function FAQ() {
   const content = useContent();
-  const { business, season, service_areas } = content;
-
-  const faqs = [
-    {
-      q: "When do you start delivering?",
-      a: `We begin deliveries on ${season.delivery_start} and continue through to ${season.delivery_end}. Peak delivery weeks (late September / early October) are our busiest, so we highly recommend booking early to secure your preferred delivery window!`,
-    },
-    {
-      q: "What areas of the Okanagan do you serve?",
-      a: `We currently deliver to ${service_areas.join(", ")}. If your area isn't listed, please reach out — we may be able to accommodate you!`,
-    },
-    {
-      q: "Do you pick everything up at the end of the season?",
-      a: `Yes! End-of-season pickup is included in every package. We schedule pickups during the ${season.pickup_window}. We'll come by and collect all pumpkins, gourds, corn stalks, and any other materials we provided. Everything is composted responsibly. You don't have to do a thing!`,
-    },
-    {
-      q: "How do I place an order?",
-      a: "Simply fill out our order form on the Contact page, choose your package, select a delivery window, and we'll confirm everything via email within 24 hours. Payment is collected at the time of booking.",
-    },
-    {
-      q: "Are your pumpkins locally grown?",
-      a: "Absolutely! We partner exclusively with local Okanagan farms. We take great pride in supporting our local agricultural community. Keeping it local means fresher pumpkins and a smaller carbon footprint!",
-    },
-    {
-      q: "Can I customize my arrangement?",
-      a: "Yes! If you have a specific vision in mind — particular colours, styles, or arrangement preferences — just let us know in the order notes or contact us directly. We love creating custom displays and will do our best to accommodate your vision.",
-    },
-    {
-      q: "What if a pumpkin goes bad or gets damaged?",
-      a: "While pumpkins are natural products and will eventually age, we use only the freshest, highest-quality pumpkins to ensure they last throughout the season. If a pumpkin deteriorates unusually quickly within the first 2 weeks, contact us and we'll replace it at no charge.",
-    },
-    {
-      q: "What if I need to cancel my order?",
-      a: "We understand that plans change! Cancellations made more than 7 days before your scheduled delivery receive a full refund. Cancellations within 7 days are eligible for a credit towards next year's booking.",
-    },
-    {
-      q: "Do you offer gift cards or gifting options?",
-      a: `What a thoughtful idea! Yes, we offer gift cards that can be purchased in any denomination. Give the gift of a stunning fall porch to someone you love! Contact us at ${business.email} to purchase a gift card.`,
-    },
-    {
-      q: "Do you set up the display, or do I have to arrange it myself?",
-      a: "We do everything! Our team delivers and professionally arranges your display right on your porch, steps, or entryway. You don't lift a finger. We style it beautifully so you can immediately enjoy the season.",
-    },
-  ];
-
+  const { faq } = content;
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -65,8 +21,9 @@ export function FAQ() {
             transition={{ duration: 0.5 }}
             className="text-orange-600 font-semibold tracking-widest uppercase text-sm mb-3"
             style={{ fontFamily: "'Lato', sans-serif" }}
+            data-content-key="faq.eyebrow"
           >
-            Got Questions?
+            {faq.eyebrow}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -80,8 +37,9 @@ export function FAQ() {
               fontWeight: 700,
               lineHeight: 1.2,
             }}
+            data-content-key="faq.headline"
           >
-            Frequently Asked Questions
+            {faq.headline}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -91,7 +49,7 @@ export function FAQ() {
             className="text-stone-600"
             style={{ fontFamily: "'Lato', sans-serif", fontSize: "1.05rem", lineHeight: 1.7 }}
           >
-            Everything you need to know before you book. Don't see your question?{" "}
+            <span data-content-key="faq.subtitle">{faq.subtitle}</span>{" "}
             <Link to="/contact" className="text-orange-600 hover:underline">
               Just ask us!
             </Link>
@@ -100,7 +58,7 @@ export function FAQ() {
 
         {/* Accordion */}
         <div className="space-y-3">
-          {faqs.map((faq, i) => (
+          {faq.questions.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -126,8 +84,9 @@ export function FAQ() {
                     fontWeight: 600,
                     lineHeight: 1.4,
                   }}
+                  data-content-key={`faq.questions.${i}.q`}
                 >
-                  {faq.q}
+                  {item.q}
                 </span>
                 <ChevronDown
                   size={20}
@@ -145,8 +104,9 @@ export function FAQ() {
                   <p
                     className="text-stone-600 pt-4"
                     style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.97rem", lineHeight: 1.75 }}
+                    data-content-key={`faq.questions.${i}.a`}
                   >
-                    {faq.a}
+                    {item.a}
                   </p>
                 </div>
               </div>

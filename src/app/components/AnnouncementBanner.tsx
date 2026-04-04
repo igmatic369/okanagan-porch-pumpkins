@@ -1,4 +1,9 @@
+import { useContent } from "../hooks/useContent";
+
 export function AnnouncementBanner() {
+  const content = useContent();
+  const { announcement } = content;
+
   return (
     <div className="bg-orange-600 text-white py-3 px-4 text-center">
       <p
@@ -6,13 +11,14 @@ export function AnnouncementBanner() {
         style={{ fontFamily: "'Lato', sans-serif" }}
       >
         🍁{" "}
-        <strong>Fall 2026 orders are now open!</strong>{" "}
-        Delivery begins September 21st — spots fill up fast!{" "}
+        <strong data-content-key="announcement.bold">{announcement.bold}</strong>{" "}
+        <span data-content-key="announcement.text">{announcement.text}</span>{" "}
         <a
           href="/packages"
           className="underline hover:text-amber-200 transition-colors ml-1"
+          data-content-key="announcement.cta"
         >
-          Reserve yours today →
+          {announcement.cta}
         </a>
         {" "}🍁
       </p>

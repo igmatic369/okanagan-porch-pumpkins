@@ -9,6 +9,7 @@ export function PackageDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const pkg = content.packages.find((p) => p.slug === slug);
   const pkgIndex = content.packages.findIndex((p) => p.slug === slug);
+  const { package_detail, season } = content;
 
   if (!pkg) return <Navigate to="/packages" replace />;
 
@@ -97,8 +98,9 @@ export function PackageDetailPage() {
                     fontSize: "1.5rem",
                     fontWeight: 700,
                   }}
+                  data-content-key="package_detail.section_about"
                 >
-                  About This Package
+                  {package_detail.section_about}
                 </h2>
                 <p
                   className="text-stone-600 mb-6"
@@ -111,8 +113,9 @@ export function PackageDetailPage() {
                 <h3
                   className="text-stone-900 mb-3"
                   style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700 }}
+                  data-content-key="package_detail.section_includes"
                 >
-                  What's Included
+                  {package_detail.section_includes}
                 </h3>
                 <ul className="space-y-2.5 mb-6">
                   {pkg.includes.map((item, i) => (
@@ -132,8 +135,9 @@ export function PackageDetailPage() {
                 <h3
                   className="text-stone-900 mb-3"
                   style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700 }}
+                  data-content-key="package_detail.section_breakdown"
                 >
-                  Pumpkin Breakdown
+                  {package_detail.section_breakdown}
                 </h3>
                 <ul className="space-y-2 mb-6">
                   {pkg.pumpkin_breakdown.map((item, i) => (
@@ -178,8 +182,9 @@ export function PackageDetailPage() {
                   <p
                     className="text-stone-500 text-sm mb-1"
                     style={{ fontFamily: "'Lato', sans-serif" }}
+                    data-content-key="package_detail.price_label"
                   >
-                    Package Price
+                    {package_detail.price_label}
                   </p>
                   <p
                     className="text-orange-600"
@@ -195,8 +200,9 @@ export function PackageDetailPage() {
                   <p
                     className="text-stone-400 text-xs mt-1"
                     style={{ fontFamily: "'Lato', sans-serif" }}
+                    data-content-key="package_detail.price_note"
                   >
-                    CAD · taxes may apply
+                    {package_detail.price_note}
                   </p>
                 </div>
 
@@ -205,8 +211,9 @@ export function PackageDetailPage() {
                   <h3
                     className="text-stone-900 mb-2"
                     style={{ fontFamily: "'Playfair Display', serif", fontSize: "1rem", fontWeight: 700 }}
+                    data-content-key="package_detail.best_for_label"
                   >
-                    Best For
+                    {package_detail.best_for_label}
                   </h3>
                   <p
                     className="text-stone-600 text-sm"
@@ -222,16 +229,17 @@ export function PackageDetailPage() {
                   <p
                     className="text-orange-700 text-sm font-semibold mb-2"
                     style={{ fontFamily: "'Lato', sans-serif" }}
+                    data-content-key="package_detail.delivery_label"
                   >
-                    🎃 Delivery Window
+                    🎃 {package_detail.delivery_label}
                   </p>
                   <p
                     className="text-stone-700 text-sm"
                     style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.6 }}
                   >
-                    Deliveries run <strong data-content-key="season.delivery_range">{content.season.delivery_range}</strong>. End-of-season
+                    Deliveries run <strong data-content-key="season.delivery_range">{season.delivery_range}</strong>. End-of-season
                     pickup is available in the{" "}
-                    <strong data-content-key="season.pickup_window">{content.season.pickup_window}</strong> (add-on).
+                    <strong data-content-key="season.pickup_window">{season.pickup_window}</strong> (add-on).
                   </p>
                 </div>
 
@@ -240,33 +248,23 @@ export function PackageDetailPage() {
                   <h3
                     className="text-stone-900"
                     style={{ fontFamily: "'Playfair Display', serif", fontSize: "1rem", fontWeight: 700 }}
+                    data-content-key="package_detail.section_faq"
                   >
-                    Common Questions
+                    {package_detail.section_faq}
                   </h3>
-                  {[
-                    {
-                      q: "Can I customise the pumpkin colours?",
-                      a: "Yes! Let us know your colour preferences when booking and we'll do our best to accommodate.",
-                    },
-                    {
-                      q: "What if I need to change my delivery window?",
-                      a: "Contact us as soon as possible. We'll accommodate changes subject to availability.",
-                    },
-                    {
-                      q: "Are add-ons included in this package?",
-                      a: "Add-ons are purchased separately. Visit the Packages page to browse available extras.",
-                    },
-                  ].map((item) => (
+                  {package_detail.mini_faq.map((item, i) => (
                     <div key={item.q} className="border-b border-stone-100 pb-3">
                       <p
                         className="text-stone-800 text-sm font-semibold mb-1"
                         style={{ fontFamily: "'Lato', sans-serif" }}
+                        data-content-key={`package_detail.mini_faq.${i}.q`}
                       >
                         {item.q}
                       </p>
                       <p
                         className="text-stone-500 text-sm"
                         style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.6 }}
+                        data-content-key={`package_detail.mini_faq.${i}.a`}
                       >
                         {item.a}
                       </p>
@@ -286,15 +284,17 @@ export function PackageDetailPage() {
               <p
                 className="text-stone-500 mb-4"
                 style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.95rem" }}
+                data-content-key="package_detail.cta_text"
               >
-                Ready to bring the fall magic to your porch?
+                {package_detail.cta_text}
               </p>
               <Link
                 to="/contact"
                 className="inline-block bg-orange-600 text-white px-10 py-4 rounded-xl font-bold text-base hover:bg-orange-500 transition-all duration-300 hover:-translate-y-0.5 shadow-lg"
                 style={{ fontFamily: "'Lato', sans-serif" }}
+                data-content-key="package_detail.cta_button"
               >
-                Book This Package
+                {package_detail.cta_button}
               </Link>
             </motion.div>
           </div>

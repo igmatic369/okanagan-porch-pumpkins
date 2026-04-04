@@ -7,7 +7,7 @@ export function OrderContact() {
   const content = useContent();
   const packages = content.packages.map((p) => `${p.name} — ${p.price}`);
   const deliveryWindows = content.delivery_windows;
-  const { business, season } = content;
+  const { business, season, contact } = content;
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -49,8 +49,9 @@ export function OrderContact() {
             <p
               className="text-orange-400 font-semibold tracking-widest uppercase text-sm mb-3"
               style={{ fontFamily: "'Lato', sans-serif" }}
+              data-content-key="contact.eyebrow"
             >
-              Ready to Order?
+              {contact.eyebrow}
             </p>
             <h2
               className="text-amber-50 mb-6"
@@ -60,14 +61,16 @@ export function OrderContact() {
                 fontWeight: 700,
                 lineHeight: 1.2,
               }}
+              data-content-key="contact.headline"
             >
-              Book Your Porch Pumpkins Today
+              {contact.headline}
             </h2>
             <p
               className="text-stone-400 mb-10"
               style={{ fontFamily: "'Lato', sans-serif", fontSize: "1.05rem", lineHeight: 1.75 }}
+              data-content-key="contact.subtitle"
             >
-              Fill out the form and we'll confirm your order within 24 hours. Delivery spots fill up fast — don't miss out on the best fall display on your street!
+              {contact.subtitle}
             </p>
 
             {/* Contact Info */}
@@ -100,8 +103,9 @@ export function OrderContact() {
               <p
                 className="text-orange-300 text-sm font-semibold mb-1"
                 style={{ fontFamily: "'Lato', sans-serif" }}
+                data-content-key="contact.season_banner_eyebrow"
               >
-                🎃 Fall 2026 Season
+                {contact.season_banner_eyebrow}
               </p>
               <p
                 className="text-amber-100"
@@ -125,21 +129,23 @@ export function OrderContact() {
                 <h3
                   className="text-amber-50 mb-3"
                   style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.8rem", fontWeight: 700 }}
+                  data-content-key="contact.success_heading"
                 >
-                  Order Received!
+                  {contact.success_heading}
                 </h3>
                 <p
                   className="text-stone-400"
                   style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.7 }}
                 >
-                  Thank you, <strong className="text-amber-100">{form.name || "friend"}</strong>! We'll be in touch within 24 hours to confirm your delivery details. Get ready for the most beautiful porch on the block! 🎃
+                  Thank you, <strong className="text-amber-100">{form.name || "friend"}</strong>! <span data-content-key="contact.success_text">{contact.success_text}</span>
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
                   className="mt-8 bg-orange-600 hover:bg-orange-500 text-white px-8 py-3 rounded-xl font-semibold transition-all"
                   style={{ fontFamily: "'Lato', sans-serif" }}
+                  data-content-key="contact.submit_another"
                 >
-                  Submit Another Order
+                  {contact.submit_another}
                 </button>
               </div>
             ) : (
@@ -150,8 +156,9 @@ export function OrderContact() {
                 <h3
                   className="text-amber-50 mb-6"
                   style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.4rem", fontWeight: 600 }}
+                  data-content-key="contact.form_title"
                 >
-                  Booking Request Form
+                  {contact.form_title}
                 </h3>
 
                 {/* Name */}
@@ -300,15 +307,17 @@ export function OrderContact() {
                   type="submit"
                   className="w-full bg-orange-600 hover:bg-orange-500 text-white py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-xl hover:shadow-orange-600/30 hover:-translate-y-0.5"
                   style={{ fontFamily: "'Lato', sans-serif" }}
+                  data-content-key="contact.submit_button"
                 >
                   <Send size={18} />
-                  Submit Booking Request
+                  {contact.submit_button}
                 </button>
                 <p
                   className="text-stone-500 text-xs text-center"
                   style={{ fontFamily: "'Lato', sans-serif" }}
+                  data-content-key="contact.confirm_note"
                 >
-                  We'll confirm your order by email within 24 hours. Payment processed upon confirmation.
+                  {contact.confirm_note}
                 </p>
               </form>
             )}

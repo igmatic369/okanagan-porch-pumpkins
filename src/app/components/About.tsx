@@ -7,7 +7,7 @@ const okanaganImage = "https://images.unsplash.com/photo-1732159622597-aefade349
 
 export function About() {
   const content = useContent();
-  const { business, service_areas } = content;
+  const { business, service_areas, about } = content;
   return (
     <section id="about" className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,8 +23,9 @@ export function About() {
             <p
               className="text-orange-600 font-semibold tracking-widest uppercase text-sm mb-3"
               style={{ fontFamily: "'Lato', sans-serif" }}
+              data-content-key="about.eyebrow"
             >
-              Our Story
+              {about.eyebrow}
             </p>
             <h2
               className="text-stone-900 mb-6"
@@ -35,8 +36,8 @@ export function About() {
                 lineHeight: 1.2,
               }}
             >
-              Born From a Love of Fall in the{" "}
-              <span className="text-orange-600 italic">Okanagan</span>
+              <span data-content-key="about.headline_line1">{about.headline_line1}</span>{" "}
+              <span className="text-orange-600 italic" data-content-key="about.headline_highlight">{about.headline_highlight}</span>
             </h2>
             <div
               className="space-y-4 text-stone-600"
@@ -52,8 +53,9 @@ export function About() {
                 to="/contact"
                 className="inline-block bg-orange-600 hover:bg-orange-500 text-white px-8 py-3.5 rounded-full font-bold transition-all duration-300 hover:shadow-lg hover:shadow-orange-600/30 hover:-translate-y-0.5"
                 style={{ fontFamily: "'Lato', sans-serif" }}
+                data-content-key="about.cta_button"
               >
-                Book Your Display →
+                {about.cta_button}
               </Link>
             </div>
           </motion.div>
@@ -97,8 +99,9 @@ export function About() {
           <p
             className="text-orange-600 font-semibold tracking-widest uppercase text-sm mb-3"
             style={{ fontFamily: "'Lato', sans-serif" }}
+            data-content-key="about.service_area_eyebrow"
           >
-            Where We Deliver
+            {about.service_area_eyebrow}
           </p>
           <h3
             className="text-stone-900 mb-4"
@@ -107,14 +110,16 @@ export function About() {
               fontSize: "clamp(1.5rem, 3vw, 2.2rem)",
               fontWeight: 700,
             }}
+            data-content-key="about.service_area_heading"
           >
-            Serving the Okanagan Valley
+            {about.service_area_heading}
           </h3>
           <p
             className="text-stone-600 mb-8 max-w-xl mx-auto"
             style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.7 }}
+            data-content-key="about.service_area_subtitle"
           >
-            We deliver across the beautiful Okanagan Valley. If your community isn't listed, reach out — we're always looking to expand!
+            {about.service_area_subtitle}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {service_areas.map((city, i) => (

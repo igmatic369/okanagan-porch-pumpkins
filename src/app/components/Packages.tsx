@@ -9,7 +9,7 @@ type Package = (typeof contentJson)["packages"][number];
 
 export function Packages() {
   const content = useContent();
-  const { packages, addons } = content;
+  const { packages, addons, packages_section } = content;
   return (
     <section id="packages" className="py-24 bg-stone-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,8 +22,9 @@ export function Packages() {
             transition={{ duration: 0.5 }}
             className="text-orange-600 font-semibold tracking-widest uppercase text-sm mb-3"
             style={{ fontFamily: "'Lato', sans-serif" }}
+            data-content-key="packages_section.eyebrow"
           >
-            Fall <span data-content-key="season.year">{content.season.year}</span> Pricing
+            {packages_section.eyebrow}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -37,8 +38,9 @@ export function Packages() {
               fontWeight: 700,
               lineHeight: 1.2,
             }}
+            data-content-key="packages_section.headline"
           >
-            Choose Your Package
+            {packages_section.headline}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -47,9 +49,9 @@ export function Packages() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-stone-600 max-w-2xl mx-auto"
             style={{ fontFamily: "'Lato', sans-serif", fontSize: "1.1rem", lineHeight: 1.7 }}
+            data-content-key="packages_section.subtitle"
           >
-            Five packages to suit every porch and budget. All pumpkins are locally sourced from
-            Okanagan farms and delivered between <span data-content-key="season.delivery_range">{content.season.delivery_range}</span>.
+            {packages_section.subtitle}
           </motion.p>
         </div>
 
@@ -76,8 +78,7 @@ export function Packages() {
           className="text-center text-stone-500 text-sm mb-20"
           style={{ fontFamily: "'Lato', sans-serif" }}
         >
-          All prices in CAD. Delivery window: <span data-content-key="season.delivery_range">{content.season.delivery_range}</span>. Service area excludes
-          Osoyoos and Oliver.{" "}
+          <span data-content-key="packages_section.note">{packages_section.note}</span>{" "}
           <Link to="/contact" className="text-orange-600 hover:underline">
             Contact us
           </Link>{" "}
@@ -95,7 +96,7 @@ export function Packages() {
             style={{ fontFamily: "'Lato', sans-serif" }}
           >
             <Plus size={16} />
-            Add-Ons
+            <span data-content-key="packages_section.addons_eyebrow">{packages_section.addons_eyebrow}</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -109,8 +110,9 @@ export function Packages() {
               fontWeight: 700,
               lineHeight: 1.2,
             }}
+            data-content-key="packages_section.addons_headline"
           >
-            Customize Your Display
+            {packages_section.addons_headline}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -119,9 +121,9 @@ export function Packages() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-stone-600 max-w-xl mx-auto"
             style={{ fontFamily: "'Lato', sans-serif", fontSize: "1rem", lineHeight: 1.7 }}
+            data-content-key="packages_section.addons_subtitle"
           >
-            Enhance any package with these optional extras. Just mention which add-ons you'd like
-            when placing your order.
+            {packages_section.addons_subtitle}
           </motion.p>
         </div>
 
@@ -207,15 +209,17 @@ export function Packages() {
           <p
             className="text-stone-600 mb-5"
             style={{ fontFamily: "'Lato', sans-serif", fontSize: "1rem" }}
+            data-content-key="packages_section.cta_text"
           >
-            Ready to book? Mention your chosen package and any add-ons when you reach out.
+            {packages_section.cta_text}
           </p>
           <Link
             to="/contact"
             className="inline-block bg-orange-600 text-white px-10 py-4 rounded-xl font-bold text-base hover:bg-orange-500 transition-all duration-300 hover:-translate-y-0.5 shadow-lg"
             style={{ fontFamily: "'Lato', sans-serif" }}
+            data-content-key="packages_section.cta_button"
           >
-            Book Your Package
+            {packages_section.cta_button}
           </Link>
         </motion.div>
       </div>

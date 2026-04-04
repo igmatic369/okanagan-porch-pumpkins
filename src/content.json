@@ -1,4 +1,199 @@
 {
+  "hero": {
+    "badge": "Now Booking for Fall 2026",
+    "headline_line1": "Bring the Magic of",
+    "headline_highlight": "Fall",
+    "headline_line2": "to Your Front Door",
+    "cta_primary": "Shop Packages",
+    "cta_secondary": "How It Works"
+  },
+  "announcement": {
+    "bold": "Fall 2026 orders are now open!",
+    "text": "Delivery begins September 21st — spots fill up fast!",
+    "cta": "Reserve yours today →"
+  },
+  "how_it_works": {
+    "eyebrow": "Simple & Stress-Free",
+    "headline": "How It Works",
+    "subtitle": "Getting a beautifully decorated porch has never been easier. Here's everything you need to know.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Choose Your Package",
+        "description": "Browse our curated seasonal packages — from cozy starter sets to grand harvest displays. Pick the size and style that fits your home and budget."
+      },
+      {
+        "number": "02",
+        "title": "We Deliver & Set Up",
+        "description": "Our team personally delivers your pumpkins and arranges them on your porch. We handle all the heavy lifting, styling, and placement — you don't lift a finger!"
+      },
+      {
+        "number": "03",
+        "title": "Enjoy the Season",
+        "description": "Sit back and soak in all the fall feels! Your porch becomes the envy of the neighbourhood from late September right through to Halloween."
+      },
+      {
+        "number": "04",
+        "title": "We Pick It All Up",
+        "description": "When the season winds down, we come back in the first two weeks of November and collect everything. No mess, no fuss — just a perfect fall experience from start to finish."
+      }
+    ],
+    "delivery_banner_eyebrow": "📅 Fall 2026 Delivery Window",
+    "delivery_banner_text": "Deliveries run from September 21st to October 21st, 2026. End-of-season pickup is scheduled for the first two weeks of November. Book early — delivery spots fill up fast!",
+    "cta": "Get Started — View Packages"
+  },
+  "why_choose_us": {
+    "eyebrow": "The Okanagan Difference",
+    "headline": "Why Choose Us?",
+    "subtitle": "We're more than just a pumpkin delivery service — we're your local Okanagan fall specialists.",
+    "features": [
+      {
+        "title": "Proudly Local",
+        "description": "We're an Okanagan-based business through and through. Every pumpkin is sourced from local Okanagan farms, supporting our community and keeping your display fresh."
+      },
+      {
+        "title": "Farm-Fresh Quality",
+        "description": "Our pumpkins are selected for size, colour, and quality. No grocery store pumpkins here — only the finest varieties hand-picked from local growers."
+      },
+      {
+        "title": "White-Glove Service",
+        "description": "We do all the work — delivery, styling, and pickup. Our team arrives at a scheduled time and creates a display you'll love. Just sit back and enjoy!"
+      },
+      {
+        "title": "End-of-Season Pickup",
+        "description": "When the season is over, we come back and remove everything. Composted responsibly — because we love the Okanagan as much as you do."
+      },
+      {
+        "title": "Customizable Displays",
+        "description": "Want something specific? We love a challenge! Tell us your vision and we'll create a custom arrangement that perfectly matches your home's style."
+      },
+      {
+        "title": "Satisfaction Guaranteed",
+        "description": "We stand behind our work 100%. If you're not happy with your display, we'll make it right — no questions asked."
+      }
+    ]
+  },
+  "gallery": {
+    "eyebrow": "Our Work",
+    "headline": "Porch Inspiration Gallery",
+    "subtitle": "From cozy cottage stoops to grand entryways, see what we've created for Okanagan families just like yours.",
+    "cta_text": "Love what you see? Book your own display for Fall 2026!",
+    "cta_button": "Book Your Display →"
+  },
+  "faq": {
+    "eyebrow": "Got Questions?",
+    "headline": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know before you book. Don't see your question?",
+    "questions": [
+      {
+        "q": "When do you start delivering?",
+        "a": "We begin deliveries on September 21 and continue through to October 21. Peak delivery weeks (late September / early October) are our busiest, so we highly recommend booking early to secure your preferred delivery window!"
+      },
+      {
+        "q": "What areas of the Okanagan do you serve?",
+        "a": "We currently deliver to Kelowna and West Kelowna. If your area isn't listed, please reach out — we may be able to accommodate you!"
+      },
+      {
+        "q": "Do you pick everything up at the end of the season?",
+        "a": "Yes! End-of-season pickup is included in every package. We schedule pickups during the first two weeks of November. We'll come by and collect all pumpkins, gourds, corn stalks, and any other materials we provided. Everything is composted responsibly. You don't have to do a thing!"
+      },
+      {
+        "q": "How do I place an order?",
+        "a": "Simply fill out our order form on the Contact page, choose your package, select a delivery window, and we'll confirm everything via email within 24 hours. Payment is collected at the time of booking."
+      },
+      {
+        "q": "Are your pumpkins locally grown?",
+        "a": "Absolutely! We partner exclusively with local Okanagan farms. We take great pride in supporting our local agricultural community. Keeping it local means fresher pumpkins and a smaller carbon footprint!"
+      },
+      {
+        "q": "Can I customize my arrangement?",
+        "a": "Yes! If you have a specific vision in mind — particular colours, styles, or arrangement preferences — just let us know in the order notes or contact us directly. We love creating custom displays and will do our best to accommodate your vision."
+      },
+      {
+        "q": "What if a pumpkin goes bad or gets damaged?",
+        "a": "While pumpkins are natural products and will eventually age, we use only the freshest, highest-quality pumpkins to ensure they last throughout the season. If a pumpkin deteriorates unusually quickly within the first 2 weeks, contact us and we'll replace it at no charge."
+      },
+      {
+        "q": "What if I need to cancel my order?",
+        "a": "We understand that plans change! Cancellations made more than 7 days before your scheduled delivery receive a full refund. Cancellations within 7 days are eligible for a credit towards next year's booking."
+      },
+      {
+        "q": "Do you offer gift cards or gifting options?",
+        "a": "What a thoughtful idea! Yes, we offer gift cards that can be purchased in any denomination. Give the gift of a stunning fall porch to someone you love! Contact us at info@okanaganporchpumpkins.ca to purchase a gift card."
+      },
+      {
+        "q": "Do you set up the display, or do I have to arrange it myself?",
+        "a": "We do everything! Our team delivers and professionally arranges your display right on your porch, steps, or entryway. You don't lift a finger. We style it beautifully so you can immediately enjoy the season."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Ready to Order?",
+    "headline": "Book Your Porch Pumpkins Today",
+    "subtitle": "Fill out the form and we'll confirm your order within 24 hours. Delivery spots fill up fast — don't miss out on the best fall display on your street!",
+    "season_banner_eyebrow": "🎃 Fall 2026 Season",
+    "form_title": "Booking Request Form",
+    "submit_button": "Submit Booking Request",
+    "confirm_note": "We'll confirm your order by email within 24 hours. Payment processed upon confirmation.",
+    "success_heading": "Order Received!",
+    "success_text": "We'll be in touch within 24 hours to confirm your delivery details. Get ready for the most beautiful porch on the block! 🎃",
+    "submit_another": "Submit Another Order"
+  },
+  "about": {
+    "eyebrow": "Our Story",
+    "headline_line1": "Born From a Love of Fall in the",
+    "headline_highlight": "Okanagan",
+    "cta_button": "Book Your Display →",
+    "service_area_eyebrow": "Where We Deliver",
+    "service_area_heading": "Serving the Okanagan Valley",
+    "service_area_subtitle": "We deliver across the beautiful Okanagan Valley. If your community isn't listed, reach out — we're always looking to expand!"
+  },
+  "cta_banner": {
+    "eyebrow": "🍁 Limited Delivery Spots Available",
+    "headline_line1": "Don't Miss the Most Beautiful",
+    "headline_highlight": "Fall Season",
+    "headline_line2": "on Your Block",
+    "subtitle": "Secure your spot for Fall 2026 and be the talk of the neighbourhood all season long. Delivery windows run September 21st through October 21st.",
+    "cta_primary": "🎃 Shop Packages Now",
+    "cta_secondary": "Book Now"
+  },
+  "packages_section": {
+    "eyebrow": "Fall 2026 Pricing",
+    "headline": "Choose Your Package",
+    "subtitle": "Five packages to suit every porch and budget. All pumpkins are locally sourced from Okanagan farms and delivered between September 21 – October 21, 2026.",
+    "note": "All prices in CAD. Delivery window: September 21 – October 21, 2026. Service area excludes Osoyoos and Oliver.",
+    "addons_eyebrow": "Add-Ons",
+    "addons_headline": "Customize Your Display",
+    "addons_subtitle": "Enhance any package with these optional extras. Just mention which add-ons you'd like when placing your order.",
+    "cta_text": "Ready to book? Mention your chosen package and any add-ons when you reach out.",
+    "cta_button": "Book Your Package"
+  },
+  "package_detail": {
+    "section_about": "About This Package",
+    "section_includes": "What's Included",
+    "section_breakdown": "Pumpkin Breakdown",
+    "section_faq": "Common Questions",
+    "price_label": "Package Price",
+    "price_note": "CAD · taxes may apply",
+    "best_for_label": "Best For",
+    "delivery_label": "Delivery Window",
+    "cta_text": "Ready to bring the fall magic to your porch?",
+    "cta_button": "Book This Package",
+    "mini_faq": [
+      {
+        "q": "Can I customise the pumpkin colours?",
+        "a": "Yes! Let us know your colour preferences when booking and we'll do our best to accommodate."
+      },
+      {
+        "q": "What if I need to change my delivery window?",
+        "a": "Contact us as soon as possible. We'll accommodate changes subject to availability."
+      },
+      {
+        "q": "Are add-ons included in this package?",
+        "a": "Add-ons are purchased separately. Visit the Packages page to browse available extras."
+      }
+    ]
+  },
   "addons": [
     {
       "tag": "Add-On for Package #1 Only",
