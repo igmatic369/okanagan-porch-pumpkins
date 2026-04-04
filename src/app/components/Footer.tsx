@@ -135,21 +135,21 @@ export function Footer() {
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-sm mt-0.5">🕐</span>
                 <span
+                  data-content-key="season.delivery_display"
                   className="text-stone-500 text-sm"
                   style={{ fontFamily: "'Lato', sans-serif" }}
                 >
-                  Deliveries: <span data-content-key="season.delivery_range">{season.delivery_range}</span>
+                  {season.delivery_display}
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-sm mt-0.5">♻️</span>
                 <span
+                  data-content-key="season.pickup_display"
                   className="text-stone-500 text-sm"
                   style={{ fontFamily: "'Lato', sans-serif" }}
                 >
-                  Pickup: <span data-content-key="season.pickup_window">{season.pickup_window.charAt(0).toUpperCase() + season.pickup_window.slice(1)}</span>
+                  {season.pickup_display}
                 </span>
               </li>
             </ul>

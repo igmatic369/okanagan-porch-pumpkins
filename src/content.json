@@ -147,7 +147,8 @@
     "cta_button": "Book Your Display →",
     "service_area_eyebrow": "Where We Deliver",
     "service_area_heading": "Serving the Okanagan Valley",
-    "service_area_subtitle": "We deliver across the beautiful Okanagan Valley. If your community isn't listed, reach out — we're always looking to expand!"
+    "service_area_subtitle": "We deliver across the beautiful Okanagan Valley. If your community isn't listed, reach out — we're always looking to expand!",
+    "locally_sourced": "🌾 Locally Sourced"
   },
   "cta_banner": {
     "eyebrow": "🍁 Limited Delivery Spots Available",
@@ -162,7 +163,7 @@
     "eyebrow": "Fall 2026 Pricing",
     "headline": "Choose Your Package",
     "subtitle": "Five packages to suit every porch and budget. All pumpkins are locally sourced from Okanagan farms and delivered between September 21 – October 21, 2026.",
-    "note": "All prices in CAD. Delivery window: September 21 – October 21, 2026. Service area excludes Osoyoos and Oliver.",
+    "note": "All prices in CAD. Delivery window: September 21 – October 21, 2026. Service area excludes Osoyoos and Oliver. Contact us with any questions.",
     "addons_eyebrow": "+ Add-Ons",
     "addons_headline": "Customize Your Display",
     "addons_subtitle": "Enhance any package with these optional extras. Just mention which add-ons you'd like when placing your order.",
@@ -247,7 +248,9 @@
     "delivery_end": "October 21",
     "pickup_window": "first two weeks of November",
     "delivery_range": "September 21 – October 21, 2026",
-    "delivery_start": "September 21"
+    "delivery_start": "September 21",
+    "delivery_display": "🕐 Deliveries: September 21 – October 21, 2026",
+    "pickup_display": "♻️ Pickup: First two weeks of November"
   },
   "business": {
     "name": "Okanagan Porch Pumpkins",

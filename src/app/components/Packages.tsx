@@ -82,11 +82,7 @@ export function Packages() {
           className="text-center text-stone-500 text-sm mb-20"
           style={{ fontFamily: "'Lato', sans-serif" }}
         >
-          <span data-content-key="packages_section.note">{packages_section.note}</span>{" "}
-          <Link to="/contact" className="text-orange-600 hover:underline">
-            Contact us
-          </Link>{" "}
-          with any questions.
+          <span data-content-key="packages_section.note">{packages_section.note}</span>
         </motion.p>
 
         {/* Add-Ons Section */}
