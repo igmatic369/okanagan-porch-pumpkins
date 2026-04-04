@@ -7,6 +7,10 @@ import type contentJson from "../../content.json";
 
 type Package = (typeof contentJson)["packages"][number];
 
+const isPreview =
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("preview") === "true";
+
 export function Packages() {
   const content = useContent();
   const { packages, addons, packages_section } = content;
@@ -131,10 +135,9 @@ export function Packages() {
           {addons.map((addon, i) => (
             <motion.div
               key={`${addon.slug}-${i}`}
-              layoutId={addon.slug}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              initial={isPreview ? false : { opacity: 0, y: 30 }}
+              whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+              viewport={isPreview ? undefined : { once: true }}
               transition={{ duration: 0.55, delay: i * 0.1 }}
               data-reorderable="addons"
               data-reorder-index={i}
@@ -237,10 +240,9 @@ function PackageCard({
 }) {
   return (
     <motion.div
-      layoutId={pkg.slug}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false }}
+      initial={isPreview ? false : { opacity: 0, y: 40 }}
+      whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+      viewport={isPreview ? undefined : { once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className={`relative rounded-2xl overflow-hidden flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${
         pkg.highlight ? "ring-4 ring-orange-400/50" : ""
