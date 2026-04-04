@@ -133,6 +133,8 @@ export function Packages() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: i * 0.1 }}
+              data-reorderable="addons"
+              data-reorder-index={i}
             >
               <Link
                 to={`/add-ons/${addon.slug}`}
@@ -237,6 +239,8 @@ function PackageCard({
       className={`relative rounded-2xl overflow-hidden flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${
         pkg.highlight ? "ring-4 ring-orange-400/50" : ""
       }`}
+      data-reorderable="packages"
+      data-reorder-index={index}
     >
       {/* Image */}
       <div className="relative h-52 overflow-hidden">

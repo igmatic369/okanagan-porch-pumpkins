@@ -116,7 +116,7 @@ export function PackageDetailPage() {
                 </h3>
                 <ul className="space-y-2.5 mb-6">
                   {pkg.includes.map((item, i) => (
-                    <li key={item} className="flex items-start gap-3">
+                    <li key={item} className="flex items-start gap-3" data-reorderable={`packages.${pkgIndex}.includes`} data-reorder-index={i}>
                       <Check size={16} className="mt-0.5 flex-shrink-0 text-orange-500" />
                       <span
                         className="text-stone-700"
@@ -137,7 +137,7 @@ export function PackageDetailPage() {
                 </h3>
                 <ul className="space-y-2 mb-6">
                   {pkg.pumpkin_breakdown.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
+                    <li key={i} className="flex items-start gap-2" data-reorderable={`packages.${pkgIndex}.pumpkin_breakdown`} data-reorder-index={i}>
                       <span
                         className="text-orange-500 mt-0.5 flex-shrink-0 text-sm font-bold"
                         style={{ fontFamily: "'Lato', sans-serif", minWidth: "1rem" }}
