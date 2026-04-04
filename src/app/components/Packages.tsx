@@ -58,14 +58,14 @@ export function Packages() {
         {/* Package Cards — top 3 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
           {packages.slice(0, 3).map((pkg, i) => (
-            <PackageCard key={pkg.slug} pkg={pkg} index={i} />
+            <PackageCard key={`${pkg.slug}-${i}`} pkg={pkg} index={i} />
           ))}
         </div>
 
         {/* Package Cards — bottom 2 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto mb-8">
           {packages.slice(3).map((pkg, i) => (
-            <PackageCard key={pkg.slug} pkg={pkg} index={i + 3} />
+            <PackageCard key={`${pkg.slug}-${i + 3}`} pkg={pkg} index={i + 3} />
           ))}
         </div>
 
@@ -130,7 +130,7 @@ export function Packages() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
           {addons.map((addon, i) => (
             <motion.div
-              key={addon.slug}
+              key={`${addon.slug}-${i}`}
               layoutId={addon.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
