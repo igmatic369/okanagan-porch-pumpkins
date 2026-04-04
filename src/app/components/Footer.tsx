@@ -140,7 +140,7 @@ export function Footer() {
                   className="text-stone-500 text-sm"
                   style={{ fontFamily: "'Lato', sans-serif" }}
                 >
-                  {`Deliveries: ${season.delivery_range}`}
+                  Deliveries: <span data-content-key="season.delivery_range">{season.delivery_range}</span>
                 </span>
               </li>
               <li className="flex items-start gap-2">
@@ -149,7 +149,7 @@ export function Footer() {
                   className="text-stone-500 text-sm"
                   style={{ fontFamily: "'Lato', sans-serif" }}
                 >
-                  {`Pickup: ${season.pickup_window.charAt(0).toUpperCase() + season.pickup_window.slice(1)}`}
+                  Pickup: <span data-content-key="season.pickup_window">{season.pickup_window.charAt(0).toUpperCase() + season.pickup_window.slice(1)}</span>
                 </span>
               </li>
             </ul>
