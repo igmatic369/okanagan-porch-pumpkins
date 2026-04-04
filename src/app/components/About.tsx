@@ -43,7 +43,7 @@ export function About() {
               style={{ fontFamily: "'Lato', sans-serif", fontSize: "1rem", lineHeight: 1.8 }}
             >
               {business.about_paragraphs.map((para, i) => (
-                <p key={i}>{para}</p>
+                <p key={i} data-content-key={`business.about_paragraphs.${i}`}>{para}</p>
               ))}
             </div>
 
@@ -117,13 +117,13 @@ export function About() {
             We deliver across the beautiful Okanagan Valley. If your community isn't listed, reach out — we're always looking to expand!
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {service_areas.map((city) => (
+            {service_areas.map((city, i) => (
               <span
                 key={city}
                 className="bg-white border border-orange-200 text-stone-700 px-5 py-2.5 rounded-full text-sm shadow-sm hover:border-orange-400 hover:text-orange-600 transition-colors cursor-default"
                 style={{ fontFamily: "'Lato', sans-serif", fontWeight: 500 }}
               >
-                📍 {city}
+                📍 <span data-content-key={`service_areas.${i}`}>{city}</span>
               </span>
             ))}
           </div>

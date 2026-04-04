@@ -115,12 +115,13 @@ export function PackageDetailPage() {
                   What's Included
                 </h3>
                 <ul className="space-y-2.5 mb-6">
-                  {pkg.includes.map((item) => (
+                  {pkg.includes.map((item, i) => (
                     <li key={item} className="flex items-start gap-3">
                       <Check size={16} className="mt-0.5 flex-shrink-0 text-orange-500" />
                       <span
                         className="text-stone-700"
                         style={{ fontFamily: "'Lato', sans-serif", fontSize: "0.95rem" }}
+                        data-content-key={`packages.${pkgIndex}.includes.${i}`}
                       >
                         {item}
                       </span>
@@ -147,7 +148,10 @@ export function PackageDetailPage() {
                         className="text-stone-600 text-sm"
                         style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.6 }}
                       >
-                        {item.quantity > 0 ? `${item.quantity} × ${item.type}` : item.type}
+                        {item.quantity > 0 && (
+                          <><span data-content-key={`packages.${pkgIndex}.pumpkin_breakdown.${i}.quantity`}>{item.quantity}</span>{" × "}</>
+                        )}
+                        <span data-content-key={`packages.${pkgIndex}.pumpkin_breakdown.${i}.type`}>{item.type}</span>
                       </span>
                     </li>
                   ))}
@@ -158,7 +162,7 @@ export function PackageDetailPage() {
                     className="text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3"
                     style={{ fontFamily: "'Lato', sans-serif" }}
                   >
-                    💡 {pkg.note}
+                    💡 <span data-content-key={`packages.${pkgIndex}.note`}>{pkg.note}</span>
                   </div>
                 )}
               </motion.div>

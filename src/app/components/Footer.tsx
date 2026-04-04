@@ -82,13 +82,13 @@ export function Footer() {
               Service Areas
             </h4>
             <ul className="space-y-2">
-              {service_areas.map((city) => (
+              {service_areas.map((city, i) => (
                 <li key={city}>
                   <span
                     className="text-stone-500 text-sm"
                     style={{ fontFamily: "'Lato', sans-serif" }}
                   >
-                    📍 {city}
+                    📍 <span data-content-key={`service_areas.${i}`}>{city}</span>
                   </span>
                 </li>
               ))}

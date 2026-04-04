@@ -51,6 +51,7 @@ export function AddOnDetailPage() {
                 addon.restricted ? "bg-amber-500 text-white" : "bg-stone-800/80 text-white"
               }`}
               style={{ fontFamily: "'Lato', sans-serif" }}
+              data-content-key={`addons.${addonIndex}.tag`}
             >
               {addon.tag}
             </span>
