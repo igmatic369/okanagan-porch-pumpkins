@@ -84,7 +84,7 @@ export function About() {
                 className="absolute bottom-0 left-0 w-3/5 h-3/5 object-cover rounded-2xl shadow-xl border-4 border-white"
               />
               {/* Badge */}
-              {about.locally_sourced?.trim() && (
+              {about.locally_sourced?.replace(/\u00A0/g, '').trim() && (
                 <div
                   className="absolute top-4 left-4 bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
                   style={{ fontFamily: "'Lato', sans-serif" }}

@@ -68,7 +68,7 @@ export function Gallery() {
               whileInView={isPreview ? undefined : { opacity: 1, scale: 1 }}
               viewport={isPreview ? undefined : { once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`${photo.span} relative overflow-hidden rounded-2xl ${isPreview ? "cursor-default" : "cursor-pointer"} group shadow-md`}
+              className={`${i === 0 ? "col-span-2 row-span-2" : "col-span-1 row-span-1"} relative overflow-hidden rounded-2xl ${isPreview ? "cursor-default" : "cursor-pointer"} group shadow-md`}
               onClick={isPreview ? undefined : () => setLightboxImg(photo.src)}
               data-reorderable="gallery.photos"
               data-reorder-index={i}

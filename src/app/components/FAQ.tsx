@@ -68,6 +68,7 @@ export function FAQ() {
               transition={{ duration: 0.5, delay: i * 0.05 }}
               data-reorderable="faq.questions"
               data-reorder-index={i}
+              data-drag-handle-only
               className={`relative border rounded-2xl overflow-hidden transition-all duration-200 ${
                 openIndex === i
                   ? "border-orange-400 shadow-md"

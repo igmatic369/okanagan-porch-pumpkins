@@ -4,6 +4,10 @@ import { Check, ArrowLeft } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useContent } from "../hooks/useContent";
 
+const isPreview =
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("preview") === "true";
+
 export function PackageDetailPage() {
   const content = useContent();
   const { slug } = useParams<{ slug: string }>();
@@ -252,7 +256,12 @@ export function PackageDetailPage() {
                     {package_detail.section_faq}
                   </h3>
                   {package_detail.mini_faq.map((item, i) => (
-                    <div key={item.q} className="border-b border-stone-100 pb-3">
+                    <div
+                      key={i}
+                      className="relative border-b border-stone-100 pb-3"
+                      data-reorderable="package_detail.mini_faq"
+                      data-reorder-index={i}
+                    >
                       <p
                         className="text-stone-800 text-sm font-semibold mb-1"
                         style={{ fontFamily: "'Lato', sans-serif" }}
@@ -269,6 +278,15 @@ export function PackageDetailPage() {
                       </p>
                     </div>
                   ))}
+                  {isPreview && package_detail.mini_faq.length < 5 && (
+                    <button
+                      className="mt-3 text-stone-400 text-sm hover:text-orange-500 border border-dashed border-stone-200 rounded-lg px-3 py-2 w-full transition-all hover:border-orange-300 hover:bg-orange-50"
+                      style={{ fontFamily: "'Lato', sans-serif" }}
+                      onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'package_detail.mini_faq' }, '*')}
+                    >
+                      + Add Question
+                    </button>
+                  )}
                 </div>
               </motion.div>
             </div>

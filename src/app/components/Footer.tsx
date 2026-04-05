@@ -204,7 +204,7 @@ export function Footer() {
                       style={{ fontFamily: "'Lato', sans-serif" }}
                       onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'business.social_links' }, '*')}
                     >
-                      + Add Link
+                      + Add Contact Info
                     </button>
                   </li>
                 )}
