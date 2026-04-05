@@ -5,7 +5,8 @@
     "headline_highlight": "Fall",
     "headline_line2": "to Your Front Door",
     "cta_primary": "Shop Packages",
-    "cta_secondary": "How It Works"
+    "cta_secondary": "How It Works",
+    "background_image": "https://images.unsplash.com/photo-1760800327755-0b680db1cb4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2lucyUyMG9uJTIwcG9yY2glMjBhdXR1bW4lMjBkZWNvcmF0aW9ufGVufDF8fHx8MTc3NDczOTU0NXww&ixlib=rb-4.1.0&q=80&w=1080"
   },
   "announcement": {
     "bold": "Fall 2026 orders are now open!",
@@ -19,21 +20,25 @@
     "steps": [
       {
         "number": "01",
+        "icon": "ShoppingBag",
         "title": "Choose Your Package",
         "description": "Browse our curated seasonal packages — from cozy starter sets to grand harvest displays. Pick the size and style that fits your home and budget."
       },
       {
         "number": "02",
+        "icon": "Truck",
         "title": "We Deliver & Set Up",
         "description": "Our team personally delivers your pumpkins and arranges them on your porch. We handle all the heavy lifting, styling, and placement — you don't lift a finger!"
       },
       {
         "number": "03",
+        "icon": "Home",
         "title": "Enjoy the Season",
         "description": "Sit back and soak in all the fall feels! Your porch becomes the envy of the neighbourhood from late September right through to Halloween."
       },
       {
         "number": "04",
+        "icon": "Recycle",
         "title": "We Pick It All Up",
         "description": "When the season winds down, we come back in the first two weeks of November and collect everything. No mess, no fuss — just a perfect fall experience from start to finish."
       }
@@ -192,7 +197,9 @@
     "service_area_eyebrow": "Where We Deliver",
     "service_area_heading": "Serving the Okanagan Valley",
     "service_area_subtitle": "We deliver across the beautiful Okanagan Valley. If your community isn't listed, reach out — we're always looking to expand!",
-    "locally_sourced": ""
+    "locally_sourced": "",
+    "image_main": "https://images.unsplash.com/photo-1603055971132-fbf2b0c2cd47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwcGF0Y2glMjBmYXJtJTIwcGlja2luZ3xlbnwxfHx8fDE3NzQ3Mzk1NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    "image_secondary": "https://images.unsplash.com/photo-1732159622597-aefade3499a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxva2FuYWdhbiUyMHZhbGxleSUyMGJyaXRpc2glMjBjb2x1bWJpYSUyMGxhbmRzY2FwZXxlbnwxfHx8fDE3NzQ3Mzk1NTN8MA&ixlib=rb-4.1.0&q=80&w=1080"
   },
   "cta_banner": {
     "eyebrow": "🍁 Limited Delivery Spots Available",
@@ -201,7 +208,8 @@
     "headline_line2": "on Your Block",
     "subtitle": "Secure your spot for Fall 2026 and be the talk of the neighbourhood all season long. Delivery windows run September 21st through October 21st.",
     "cta_primary": "🎃 Shop Packages Now",
-    "cta_secondary": "Book Now"
+    "cta_secondary": "Book Now",
+    "background_image": "https://images.unsplash.com/photo-1603055971132-fbf2b0c2cd47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwcGF0Y2glMjBmYXJtJTIwcGlja2luZ3xlbnwxfHx8fDE3NzQ3Mzk1NTF8MA&ixlib=rb-4.1.0&q=80&w=1080"
   },
   "packages_section": {
     "eyebrow": "Fall 2026 Pricing",

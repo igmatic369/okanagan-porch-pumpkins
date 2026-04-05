@@ -121,7 +121,7 @@ export function Footer() {
             >
               Get In Touch
             </h4>
-            {/* Contact — email / phone / location */}
+            {/* Contact — fixed fields + reorderable social_links in one list */}
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
                 <span className="text-sm mt-0.5">📧</span>
@@ -153,26 +153,21 @@ export function Footer() {
                   {business.service_area}
                 </span>
               </li>
-            </ul>
-
-            {/* Social / extra links — reorderable array */}
-            {(business.social_links?.length > 0 || isPreview) && (
-              <ul className="space-y-2 mt-4 pt-4 border-t border-stone-800/60">
-                {business.social_links?.map((link: { platform: string; url: string }, i: number) => (
-                  <li
-                    key={i}
-                    className="relative flex items-center gap-1.5"
-                    data-reorderable="business.social_links"
-                    data-reorder-index={i}
+              {business.social_links?.map((link: { platform: string; url: string }, i: number) => (
+                <li
+                  key={i}
+                  className="relative flex items-start gap-2"
+                  data-reorderable="business.social_links"
+                  data-reorder-index={i}
+                >
+                  <span
+                    className="text-stone-500 text-sm font-medium"
+                    style={{ fontFamily: "'Lato', sans-serif" }}
+                    data-content-key={`business.social_links.${i}.platform`}
                   >
-                    <span className="text-stone-600 text-sm">📌</span>
-                    <span
-                      className="text-stone-500 text-sm font-medium"
-                      style={{ fontFamily: "'Lato', sans-serif" }}
-                      data-content-key={`business.social_links.${i}.platform`}
-                    >
-                      {link.platform}:
-                    </span>
+                    {link.platform}
+                  </span>
+                  {link.url && (
                     <span
                       className="text-stone-500 text-sm truncate"
                       style={{ fontFamily: "'Lato', sans-serif" }}
@@ -180,21 +175,21 @@ export function Footer() {
                     >
                       {link.url}
                     </span>
-                  </li>
-                ))}
-                {isPreview && (
-                  <li>
-                    <button
-                      className="text-stone-600 text-sm hover:text-orange-400 transition-colors border border-dashed border-stone-700 rounded px-2 py-1"
-                      style={{ fontFamily: "'Lato', sans-serif" }}
-                      onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'business.social_links' }, '*')}
-                    >
-                      + Add Contact Info
-                    </button>
-                  </li>
-                )}
-              </ul>
-            )}
+                  )}
+                </li>
+              ))}
+              {isPreview && (
+                <li>
+                  <button
+                    className="text-stone-600 text-sm hover:text-orange-400 transition-colors border border-dashed border-stone-700 rounded px-2 py-1"
+                    style={{ fontFamily: "'Lato', sans-serif" }}
+                    onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'business.social_links' }, '*')}
+                  >
+                    + Add Contact Info
+                  </button>
+                </li>
+              )}
+            </ul>
 
             {/* Season Info */}
             <div className="mt-4 pt-4 border-t border-stone-800/60">

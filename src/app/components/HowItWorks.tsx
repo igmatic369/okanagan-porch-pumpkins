@@ -1,16 +1,34 @@
 import { motion } from "motion/react";
-import { ShoppingBag, Truck, Home, Recycle } from "lucide-react";
+import {
+  ShoppingBag, Truck, Home, Recycle,
+  MapPin, Leaf, Smile, Heart,
+  Shield, Star, Sun, Moon,
+  Cloud, Zap, Award, Gift,
+  Camera, Music, Coffee, Book,
+  Briefcase, Clock, Phone, Mail, Globe
+} from "lucide-react";
 import { Link } from "react-router";
 import { useContent } from "../hooks/useContent";
 
-// TODO: add icon picker in preview editor (select from stepIcons list per step)
-const stepIcons = [ShoppingBag, Truck, Home, Recycle];
+const iconMap: Record<string, React.ComponentType<{ className?: string; size?: number }>> = {
+  ShoppingBag, Truck, Home, Recycle,
+  MapPin, Leaf, Smile, Heart,
+  Shield, Star, Sun, Moon,
+  Cloud, Zap, Award, Gift,
+  Camera, Music, Coffee, Book,
+  Briefcase, Clock, Phone, Mail, Globe,
+}
+
 const stepColors = [
   { color: "bg-amber-100", iconColor: "text-orange-600" },
   { color: "bg-orange-100", iconColor: "text-orange-700" },
   { color: "bg-red-50",    iconColor: "text-red-700" },
   { color: "bg-stone-100", iconColor: "text-stone-700" },
 ];
+
+const isPreview =
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("preview") === "true";
 
 export function HowItWorks() {
   const content = useContent();
@@ -22,9 +40,9 @@ export function HowItWorks() {
         {/* Header */}
         <div className="text-center mb-16">
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={isPreview ? false : { opacity: 0, y: 10 }}
+            whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+            viewport={isPreview ? undefined : { once: true }}
             transition={{ duration: 0.5 }}
             className="text-orange-600 font-semibold tracking-widest uppercase text-sm mb-3"
             style={{ fontFamily: "'Lato', sans-serif" }}
@@ -33,9 +51,9 @@ export function HowItWorks() {
             {how_it_works.eyebrow}
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={isPreview ? false : { opacity: 0, y: 20 }}
+            whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+            viewport={isPreview ? undefined : { once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-stone-900 mb-5"
             style={{
@@ -49,9 +67,9 @@ export function HowItWorks() {
             {how_it_works.headline}
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={isPreview ? false : { opacity: 0, y: 20 }}
+            whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+            viewport={isPreview ? undefined : { once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-stone-600 max-w-2xl mx-auto"
             style={{ fontFamily: "'Lato', sans-serif", fontSize: "1.1rem", lineHeight: 1.7 }}
@@ -64,16 +82,19 @@ export function HowItWorks() {
         {/* Steps */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {how_it_works.steps.map((step, i) => {
-            const Icon = stepIcons[i]
-            const { color, iconColor } = stepColors[i]
+            const Icon = iconMap[step.icon] || ShoppingBag
+            const { color, iconColor } = stepColors[i % stepColors.length]
             return (
               <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                key={i}
+                initial={isPreview ? false : { opacity: 0, y: 40 }}
+                whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+                viewport={isPreview ? undefined : { once: true }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
                 className="relative"
+                data-reorderable="how_it_works.steps"
+                data-reorder-index={i}
+                data-drag-handle-only
               >
                 {/* Connector line (desktop) */}
                 {i < how_it_works.steps.length - 1 && (
@@ -93,7 +114,7 @@ export function HowItWorks() {
                     className="text-orange-300 mb-2"
                     style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", fontWeight: 700, letterSpacing: "0.1em" }}
                   >
-                    STEP {step.number}
+                    STEP <span data-content-key={`how_it_works.steps.${i}.number`}>{step.number}</span>
                   </div>
 
                   {/* Title */}
@@ -124,11 +145,22 @@ export function HowItWorks() {
           })}
         </div>
 
+        {isPreview && (
+          <div className="flex justify-center mt-8">
+            <button
+              className="border-2 border-dashed border-stone-300 rounded-2xl px-8 py-4 text-stone-400 font-semibold hover:border-orange-400 hover:text-orange-500 hover:bg-orange-100 transition-all"
+              onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'how_it_works.steps' }, '*')}
+            >
+              + Add Step
+            </button>
+          </div>
+        )}
+
         {/* Delivery Window Info */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={isPreview ? false : { opacity: 0, y: 20 }}
+          whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+          viewport={isPreview ? undefined : { once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-14 bg-orange-50 border border-orange-200 rounded-2xl p-8 text-center max-w-3xl mx-auto"
         >
@@ -150,9 +182,9 @@ export function HowItWorks() {
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={isPreview ? false : { opacity: 0, y: 20 }}
+          whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+          viewport={isPreview ? undefined : { once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center mt-10"
         >
