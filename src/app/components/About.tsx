@@ -6,6 +6,9 @@ const isPreview =
   typeof window !== "undefined" &&
   new URLSearchParams(window.location.search).get("preview") === "true";
 
+const farmImage = "https://images.unsplash.com/photo-1603055971132-fbf2b0c2cd47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwcGF0Y2glMjBmYXJtJTIwcGlja2luZ3xlbnwxfHx8fDE3NzQ3Mzk1NTF8MA&ixlib=rb-4.1.0&q=80&w=1080";
+const okanaganImage = "https://images.unsplash.com/photo-1732159622597-aefade3499a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxva2FuYWdhbiUyMHZhbGxleSUyMGJyaXRpc2glMjBjb2x1bWJpYSUyMGxhbmRzY2FwZXxlbnwxfHx8fDE3NzQ3Mzk1NTN8MA&ixlib=rb-4.1.0&q=80&w=1080";
+
 export function About() {
   const content = useContent();
   const { business, service_areas, about } = content;
@@ -71,16 +74,14 @@ export function About() {
           >
             <div className="relative h-[450px]">
               <img
-                src={about.image_main}
+                src={farmImage}
                 alt="Local pumpkin farm"
                 className="absolute top-0 right-0 w-4/5 h-4/5 object-cover rounded-2xl shadow-2xl"
-                data-content-key="about.image_main"
               />
               <img
-                src={about.image_secondary}
+                src={okanaganImage}
                 alt="Okanagan Valley"
                 className="absolute bottom-0 left-0 w-3/5 h-3/5 object-cover rounded-2xl shadow-xl border-4 border-white"
-                data-content-key="about.image_secondary"
               />
               {/* Badge */}
               {about.locally_sourced?.replace(/\u00A0/g, '').trim() && (
