@@ -13,11 +13,9 @@ export function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Image */}
-      <img
-        src={content.hero.background_image}
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover object-center"
-        data-content-key="hero.background_image"
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${content.hero.background_image})` }}
       />
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-stone-950/70 via-stone-900/50 to-stone-950/80" />

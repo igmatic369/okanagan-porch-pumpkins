@@ -9,11 +9,9 @@ export function SeasonCTA() {
   return (
     <section className="relative py-28 overflow-hidden">
       {/* Background */}
-      <img
-        src={cta_banner.background_image}
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover object-center"
-        data-content-key="cta_banner.background_image"
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${cta_banner.background_image})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/75 to-stone-950/60" />
 
