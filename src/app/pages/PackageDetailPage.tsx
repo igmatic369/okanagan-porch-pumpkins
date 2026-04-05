@@ -9,7 +9,7 @@ export function PackageDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const pkg = content.packages.find((p) => p.slug === slug);
   const pkgIndex = content.packages.findIndex((p) => p.slug === slug);
-  const { package_detail, season } = content;
+  const { package_detail } = content;
 
   if (!pkg) return <Navigate to="/packages" replace />;
 
@@ -236,10 +236,9 @@ export function PackageDetailPage() {
                   <p
                     className="text-stone-700 text-sm"
                     style={{ fontFamily: "'Lato', sans-serif", lineHeight: 1.6 }}
+                    data-content-key="package_detail.delivery_text"
                   >
-                    Deliveries run <strong data-content-key="season.delivery_range">{season.delivery_range}</strong>. End-of-season
-                    pickup is available in the{" "}
-                    <strong data-content-key="season.pickup_window">{season.pickup_window}</strong> (add-on).
+                    {package_detail.delivery_text}
                   </p>
                 </div>
 

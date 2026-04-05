@@ -1,6 +1,10 @@
 import { Link } from "react-router";
 import { useContent } from "../hooks/useContent";
 
+const isPreview =
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("preview") === "true";
+
 const quickLinks = [
   { label: "Home", to: "/" },
   { label: "How It Works", to: "/how-it-works" },
@@ -83,7 +87,12 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               {service_areas.map((city, i) => (
-                <li key={city}>
+                <li
+                  key={`${city}-${i}`}
+                  className="relative"
+                  data-reorderable="service_areas"
+                  data-reorder-index={i}
+                >
                   <span
                     className="text-stone-500 text-sm"
                     style={{ fontFamily: "'Lato', sans-serif" }}
@@ -93,6 +102,15 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+            {isPreview && (
+              <button
+                className="mt-2 text-stone-600 text-sm hover:text-orange-400 transition-colors border border-dashed border-stone-700 rounded px-2 py-1"
+                style={{ fontFamily: "'Lato', sans-serif" }}
+                onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'service_areas' }, '*')}
+              >
+                + Add City
+              </button>
+            )}
           </div>
 
           {/* Contact */}
@@ -153,6 +171,45 @@ export function Footer() {
                 </span>
               </li>
             </ul>
+
+            {(business.social_links?.length > 0 || isPreview) && (
+              <ul className="space-y-2 mt-4">
+                {business.social_links?.map((link: { platform: string; url: string }, i: number) => (
+                  <li
+                    key={i}
+                    className="relative flex items-center gap-1.5"
+                    data-reorderable="business.social_links"
+                    data-reorder-index={i}
+                  >
+                    <span
+                      className="text-stone-500 text-sm font-medium"
+                      style={{ fontFamily: "'Lato', sans-serif" }}
+                      data-content-key={`business.social_links.${i}.platform`}
+                    >
+                      {link.platform}:
+                    </span>
+                    <span
+                      className="text-stone-500 text-sm truncate"
+                      style={{ fontFamily: "'Lato', sans-serif" }}
+                      data-content-key={`business.social_links.${i}.url`}
+                    >
+                      {link.url}
+                    </span>
+                  </li>
+                ))}
+                {isPreview && (
+                  <li>
+                    <button
+                      className="text-stone-600 text-sm hover:text-orange-400 transition-colors border border-dashed border-stone-700 rounded px-2 py-1"
+                      style={{ fontFamily: "'Lato', sans-serif" }}
+                      onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'business.social_links' }, '*')}
+                    >
+                      + Add Link
+                    </button>
+                  </li>
+                )}
+              </ul>
+            )}
 
             <div className="mt-6 pt-5 border-t border-stone-800">
               <p

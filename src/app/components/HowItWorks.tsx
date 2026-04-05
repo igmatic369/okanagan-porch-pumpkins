@@ -3,6 +3,7 @@ import { ShoppingBag, Truck, Home, Recycle } from "lucide-react";
 import { Link } from "react-router";
 import { useContent } from "../hooks/useContent";
 
+// TODO: add icon picker in preview editor (select from stepIcons list per step)
 const stepIcons = [ShoppingBag, Truck, Home, Recycle];
 const stepColors = [
   { color: "bg-amber-100", iconColor: "text-orange-600" },

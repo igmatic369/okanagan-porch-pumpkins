@@ -1,7 +1,6 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { Link } from "react-router";
 import { useContent } from "../hooks/useContent";
 
 const isPreview =
@@ -46,17 +45,15 @@ export function FAQ() {
             {faq.headline}
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={isPreview ? false : { opacity: 0, y: 20 }}
+            whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+            viewport={isPreview ? undefined : { once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-stone-600"
             style={{ fontFamily: "'Lato', sans-serif", fontSize: "1.05rem", lineHeight: 1.7 }}
+            data-content-key="faq.subtitle"
           >
-            <span data-content-key="faq.subtitle">{faq.subtitle}</span>{" "}
-            <Link to="/contact" className="text-orange-600 hover:underline">
-              Just ask us!
-            </Link>
+            {faq.subtitle}
           </motion.p>
         </div>
 

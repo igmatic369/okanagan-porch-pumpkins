@@ -127,7 +127,7 @@
   "faq": {
     "eyebrow": "Got Questions?",
     "headline": "Frequently Asked Questions",
-    "subtitle": "Everything you need to know before you book. Don't see your question?",
+    "subtitle": "Everything you need to know before you book. Don't see your question? Just ask us!",
     "questions": [
       {
         "q": "When do you start delivering?",
@@ -223,6 +223,7 @@
     "price_note": "CAD · taxes may apply",
     "best_for_label": "Best For",
     "delivery_label": "Delivery Window",
+    "delivery_text": "Deliveries run September 21 – October 21, 2026. End-of-season pickup is available in the first two weeks of November (add-on).",
     "cta_text": "Ready to bring the fall magic to your porch?",
     "cta_button": "Book This Package",
     "mini_faq": [
@@ -308,7 +309,8 @@
       "Every fall, the Okanagan transforms into a canvas of gold, amber, and deep red. We thought — what better way to celebrate that magic than by bringing the most beautiful pumpkins in the valley right to your front door?",
       "We partner exclusively with local Okanagan farms to source the freshest, most gorgeous pumpkins of the season. By choosing us, you're not just getting a beautiful porch — you're supporting local farmers and keeping our community thriving."
     ],
-    "hero_description": "Okanagan Porch Pumpkins delivers stunning, professionally styled pumpkin arrangements right to your doorstep — so you can enjoy the beauty of the season without the hassle."
+    "hero_description": "Okanagan Porch Pumpkins delivers stunning, professionally styled pumpkin arrangements right to your doorstep — so you can enjoy the beauty of the season without the hassle.",
+    "social_links": []
   },
   "packages": [
     {

@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { MapPin, Leaf, Smile, RefreshCw, Heart, Shield } from "lucide-react";
 import { useContent } from "../hooks/useContent";
 
+// TODO: add icon picker in preview editor (select from featureIcons list per feature)
 const featureIcons = [MapPin, Leaf, Smile, RefreshCw, Heart, Shield];
 
 const isPreview =
