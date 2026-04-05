@@ -4,55 +4,15 @@ import { X } from "lucide-react";
 import { Link } from "react-router";
 import { useContent } from "../hooks/useContent";
 
-const photos = [
-  {
-    url: "https://images.unsplash.com/photo-1763333408689-3ec67351ac60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwYXJyYW5nZW1lbnQlMjBzdG9vcCUyMHN0ZXBzJTIwaG9tZXxlbnwxfHx8fDE3NzQ3Mzk1NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    alt: "Pumpkin arrangement on front steps",
-    label: "Classic Harvest Display",
-    span: "col-span-2 row-span-2",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1757181470751-b69ea4449ccf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMHB1bXBraW5zJTIwYXV0dW1uJTIwZGlzcGxheXxlbnwxfHx8fDE3NzQ3Mzk1NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    alt: "Colorful pumpkins display",
-    label: "Colourful Variety Mix",
-    span: "col-span-1 row-span-1",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1696787708254-170f0362e6dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYWxsJTIwcHVtcGtpbiUyMGhhcnZlc3QlMjBhcnJhbmdlbWVudCUyMGRvb3JzdGVwfGVufDF8fHx8MTc3NDczOTU0NXww&ixlib=rb-4.1.0&q=80&w=1080",
-    alt: "Fall pumpkin harvest arrangement",
-    label: "Grand Harvest Package",
-    span: "col-span-1 row-span-1",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1721934081800-29ec9103722e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHB1bXBraW5zJTIwZWxlZ2FudCUyMGF1dHVtbiUyMGRlY29yfGVufDF8fHx8MTc3NDczOTU1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-    alt: "White pumpkins elegant decor",
-    label: "Elegant White Collection",
-    span: "col-span-1 row-span-1",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1762568682714-5ee72514e883?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYWxsb3dlZW4lMjBmYWxsJTIwc2Vhc29uYWwlMjBob21lJTIwZXh0ZXJpb3IlMjBkZWNvcmF0aW9ufGVufDF8fHx8MTc3NDczOTU1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-    alt: "Fall seasonal home exterior",
-    label: "Bountiful Package",
-    span: "col-span-1 row-span-1",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1762527645208-84b0d3e792cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdXR1bW4lMjBmcm9udCUyMGRvb3IlMjB3cmVhdGglMjBmYWxsJTIwZGVjb3J8ZW58MXx8fHwxNzc0NzM5NTUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    alt: "Autumn front door wreath",
-    label: "Front Door Styling",
-    span: "col-span-1 row-span-1",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1730331775349-4290c03a34e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwY2FydmluZyUyMGphY2slMjBvJTIwbGFudGVybiUyMGNyZWF0aXZlfGVufDF8fHx8MTc3NDczOTU2OHww&ixlib=rb-4.1.0&q=80&w=1080",
-    alt: "Creative jack o lantern",
-    label: "Carving Add-On",
-    span: "col-span-1 row-span-1",
-  },
-];
+const isPreview =
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("preview") === "true";
 
 export function Gallery() {
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const content = useContent();
   const { gallery } = content;
+  const photos = gallery.photos ?? [];
 
   return (
     <section id="gallery" className="py-24 bg-amber-50">
@@ -60,9 +20,9 @@ export function Gallery() {
         {/* Header */}
         <div className="text-center mb-16">
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={isPreview ? false : { opacity: 0, y: 10 }}
+            whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+            viewport={isPreview ? undefined : { once: true }}
             transition={{ duration: 0.5 }}
             className="text-orange-600 font-semibold tracking-widest uppercase text-sm mb-3"
             style={{ fontFamily: "'Lato', sans-serif" }}
@@ -71,9 +31,9 @@ export function Gallery() {
             {gallery.eyebrow}
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={isPreview ? false : { opacity: 0, y: 20 }}
+            whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+            viewport={isPreview ? undefined : { once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-stone-900 mb-5"
             style={{
@@ -87,9 +47,9 @@ export function Gallery() {
             {gallery.headline}
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={isPreview ? false : { opacity: 0, y: 20 }}
+            whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+            viewport={isPreview ? undefined : { once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-stone-600 max-w-2xl mx-auto"
             style={{ fontFamily: "'Lato', sans-serif", fontSize: "1.1rem", lineHeight: 1.7 }}
@@ -103,24 +63,28 @@ export function Gallery() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-[200px]">
           {photos.map((photo, i) => (
             <motion.div
-              key={photo.alt}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              key={`${photo.src}-${i}`}
+              initial={isPreview ? false : { opacity: 0, scale: 0.95 }}
+              whileInView={isPreview ? undefined : { opacity: 1, scale: 1 }}
+              viewport={isPreview ? undefined : { once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`${photo.span} relative overflow-hidden rounded-2xl cursor-pointer group shadow-md`}
-              onClick={() => setLightboxImg(photo.url)}
+              className={`${photo.span} relative overflow-hidden rounded-2xl ${isPreview ? "cursor-default" : "cursor-pointer"} group shadow-md`}
+              onClick={isPreview ? undefined : () => setLightboxImg(photo.src)}
+              data-reorderable="gallery.photos"
+              data-reorder-index={i}
             >
               <img
-                src={photo.url}
+                src={photo.src}
                 alt={photo.alt}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                data-content-key={`gallery.photos.${i}.src`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                 <span
                   className="text-white text-sm font-semibold"
                   style={{ fontFamily: "'Lato', sans-serif" }}
+                  data-content-key={`gallery.photos.${i}.label`}
                 >
                   {photo.label}
                 </span>
@@ -129,8 +93,8 @@ export function Gallery() {
           ))}
         </div>
 
-        {/* Lightbox */}
-        {lightboxImg && (
+        {/* Lightbox — only in non-preview mode */}
+        {!isPreview && lightboxImg && (
           <div
             className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
             onClick={() => setLightboxImg(null)}
@@ -152,9 +116,9 @@ export function Gallery() {
 
         {/* CTA under gallery */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          initial={isPreview ? false : { opacity: 0 }}
+          whileInView={isPreview ? undefined : { opacity: 1 }}
+          viewport={isPreview ? undefined : { once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-10"
         >

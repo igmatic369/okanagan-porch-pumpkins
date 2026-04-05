@@ -78,7 +78,51 @@
     "headline": "Porch Inspiration Gallery",
     "subtitle": "From cozy cottage stoops to grand entryways, see what we've created for Okanagan families just like yours.",
     "cta_text": "Love what you see? Book your own display for Fall 2026!",
-    "cta_button": "Book Your Display →"
+    "cta_button": "Book Your Display →",
+    "photos": [
+      {
+        "src": "https://images.unsplash.com/photo-1763333408689-3ec67351ac60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwYXJyYW5nZW1lbnQlMjBzdG9vcCUyMHN0ZXBzJTIwaG9tZXxlbnwxfHx8fDE3NzQ3Mzk1NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "alt": "Pumpkin arrangement on front steps",
+        "label": "Classic Harvest Display",
+        "span": "col-span-2 row-span-2"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1757181470751-b69ea4449ccf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMHB1bXBraW5zJTIwYXV0dW1uJTIwZGlzcGxheXxlbnwxfHx8fDE3NzQ3Mzk1NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "alt": "Colorful pumpkins display",
+        "label": "Colourful Variety Mix",
+        "span": "col-span-1 row-span-1"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1696787708254-170f0362e6dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYWxsJTIwcHVtcGtpbiUyMGhhcnZlc3QlMjBhcnJhbmdlbWVudCUyMGRvb3JzdGVwfGVufDF8fHx8MTc3NDczOTU0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+        "alt": "Fall pumpkin harvest arrangement",
+        "label": "Grand Harvest Package",
+        "span": "col-span-1 row-span-1"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1721934081800-29ec9103722e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHB1bXBraW5zJTIwZWxlZ2FudCUyMGF1dHVtbiUyMGRlY29yfGVufDF8fHx8MTc3NDczOTU1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+        "alt": "White pumpkins elegant decor",
+        "label": "Elegant White Collection",
+        "span": "col-span-1 row-span-1"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1762568682714-5ee72514e883?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYWxsb3dlZW4lMjBmYWxsJTIwc2Vhc29uYWwlMjBob21lJTIwZXh0ZXJpb3IlMjBkZWNvcmF0aW9ufGVufDF8fHx8MTc3NDczOTU1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+        "alt": "Fall seasonal home exterior",
+        "label": "Bountiful Package",
+        "span": "col-span-1 row-span-1"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1762527645208-84b0d3e792cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhdXR1bW4lMjBmcm9udCUyMGRvb3IlMjB3cmVhdGglMjBmYWxsJTIwZGVjb3J8ZW58MXx8fHwxNzc0NzM5NTUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "alt": "Autumn front door wreath",
+        "label": "Front Door Styling",
+        "span": "col-span-1 row-span-1"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1730331775349-4290c03a34e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwY2FydmluZyUyMGphY2slMjBvJTIwbGFudGVybiUyMGNyZWF0aXZlfGVufDF8fHx8MTc3NDczOTU2OHww&ixlib=rb-4.1.0&q=80&w=1080",
+        "alt": "Creative jack o lantern",
+        "label": "Carving Add-On",
+        "span": "col-span-1 row-span-1"
+      }
+    ]
   },
   "faq": {
     "eyebrow": "Got Questions?",
