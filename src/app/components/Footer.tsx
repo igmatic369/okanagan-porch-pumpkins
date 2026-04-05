@@ -121,7 +121,8 @@ export function Footer() {
             >
               Get In Touch
             </h4>
-            <ul className="space-y-4">
+            {/* Contact — email / phone / location */}
+            <ul className="space-y-3">
               <li className="flex items-start gap-2">
                 <span className="text-sm mt-0.5">📧</span>
                 <span
@@ -152,28 +153,11 @@ export function Footer() {
                   {business.service_area}
                 </span>
               </li>
-              <li className="flex items-start gap-2">
-                <span
-                  data-content-key="season.delivery_display"
-                  className="text-stone-500 text-sm"
-                  style={{ fontFamily: "'Lato', sans-serif" }}
-                >
-                  {season.delivery_display}
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span
-                  data-content-key="season.pickup_display"
-                  className="text-stone-500 text-sm"
-                  style={{ fontFamily: "'Lato', sans-serif" }}
-                >
-                  {season.pickup_display}
-                </span>
-              </li>
             </ul>
 
+            {/* Social / extra links — reorderable array */}
             {(business.social_links?.length > 0 || isPreview) && (
-              <ul className="space-y-2 mt-4">
+              <ul className="space-y-2 mt-4 pt-4 border-t border-stone-800/60">
                 {business.social_links?.map((link: { platform: string; url: string }, i: number) => (
                   <li
                     key={i}
@@ -181,6 +165,7 @@ export function Footer() {
                     data-reorderable="business.social_links"
                     data-reorder-index={i}
                   >
+                    <span className="text-stone-600 text-sm">📌</span>
                     <span
                       className="text-stone-500 text-sm font-medium"
                       style={{ fontFamily: "'Lato', sans-serif" }}
@@ -210,6 +195,32 @@ export function Footer() {
                 )}
               </ul>
             )}
+
+            {/* Season Info */}
+            <div className="mt-4 pt-4 border-t border-stone-800/60">
+              <p
+                className="text-stone-600 text-xs uppercase tracking-wider mb-2"
+                style={{ fontFamily: "'Lato', sans-serif" }}
+              >
+                Season Info
+              </p>
+              <div className="space-y-2">
+                <p
+                  data-content-key="season.delivery_display"
+                  className="text-stone-500 text-sm"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
+                >
+                  {season.delivery_display}
+                </p>
+                <p
+                  data-content-key="season.pickup_display"
+                  className="text-stone-500 text-sm"
+                  style={{ fontFamily: "'Lato', sans-serif" }}
+                >
+                  {season.pickup_display}
+                </p>
+              </div>
+            </div>
 
             <div className="mt-6 pt-5 border-t border-stone-800">
               <p
