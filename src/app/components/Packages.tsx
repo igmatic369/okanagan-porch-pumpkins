@@ -73,6 +73,17 @@ export function Packages() {
           ))}
         </div>
 
+        {isPreview && (
+          <div className="flex justify-center mb-8">
+            <button
+              className="border-2 border-dashed border-stone-300 rounded-2xl px-8 py-4 text-stone-400 font-semibold hover:border-orange-400 hover:text-orange-500 hover:bg-orange-50 transition-all"
+              onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'packages' }, '*')}
+            >
+              + Add Package
+            </button>
+          </div>
+        )}
+
         {/* Note */}
         <motion.p
           initial={{ opacity: 0 }}
@@ -197,6 +208,17 @@ export function Packages() {
             </motion.div>
           ))}
         </div>
+
+        {isPreview && (
+          <div className="flex justify-center mt-5 mb-8">
+            <button
+              className="border-2 border-dashed border-stone-300 rounded-2xl px-8 py-4 text-stone-400 font-semibold hover:border-orange-400 hover:text-orange-500 hover:bg-orange-50 transition-all"
+              onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'addons' }, '*')}
+            >
+              + Add Add-On
+            </button>
+          </div>
+        )}
 
         {/* Final CTA */}
         <motion.div

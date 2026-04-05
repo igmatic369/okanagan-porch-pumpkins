@@ -4,6 +4,10 @@ import { useContent } from "../hooks/useContent";
 
 const featureIcons = [MapPin, Leaf, Smile, RefreshCw, Heart, Shield];
 
+const isPreview =
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("preview") === "true";
+
 export function WhyUs() {
   const content = useContent();
   const { why_choose_us } = content;
@@ -62,15 +66,17 @@ export function WhyUs() {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {why_choose_us.features.map((feature, i) => {
-            const Icon = featureIcons[i]
+            const Icon = featureIcons[i % featureIcons.length]
             return (
               <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                key={i}
+                initial={isPreview ? false : { opacity: 0, y: 30 }}
+                whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+                viewport={isPreview ? undefined : { once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group p-8 rounded-2xl bg-stone-800/60 hover:bg-stone-800 border border-stone-700 hover:border-orange-600/50 transition-all duration-300"
+                data-reorderable="why_choose_us.features"
+                data-reorder-index={i}
+                className="relative group p-8 rounded-2xl bg-stone-800/60 hover:bg-stone-800 border border-stone-700 hover:border-orange-600/50 transition-all duration-300"
               >
                 <div className="w-14 h-14 rounded-xl bg-orange-600/20 flex items-center justify-center mb-5 group-hover:bg-orange-600/40 transition-colors">
                   <Icon className="text-orange-400" size={26} />
@@ -93,6 +99,17 @@ export function WhyUs() {
             )
           })}
         </div>
+
+        {isPreview && (
+          <div className="flex justify-center mt-8">
+            <button
+              className="border-2 border-dashed border-stone-600 rounded-2xl px-8 py-4 text-stone-400 font-semibold hover:border-orange-400 hover:text-orange-400 hover:bg-stone-800 transition-all"
+              onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'why_choose_us.features' }, '*')}
+            >
+              + Add Feature
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

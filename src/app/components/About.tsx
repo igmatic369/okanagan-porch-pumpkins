@@ -2,6 +2,10 @@ import { motion } from "motion/react";
 import { Link } from "react-router";
 import { useContent } from "../hooks/useContent";
 
+const isPreview =
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("preview") === "true";
+
 const farmImage = "https://images.unsplash.com/photo-1603055971132-fbf2b0c2cd47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwcGF0Y2glMjBmYXJtJTIwcGlja2luZ3xlbnwxfHx8fDE3NzQ3Mzk1NTF8MA&ixlib=rb-4.1.0&q=80&w=1080";
 const okanaganImage = "https://images.unsplash.com/photo-1732159622597-aefade3499a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxva2FuYWdhbiUyMHZhbGxleSUyMGJyaXRpc2glMjBjb2x1bWJpYSUyMGxhbmRzY2FwZXxlbnwxfHx8fDE3NzQ3Mzk1NTN8MA&ixlib=rb-4.1.0&q=80&w=1080";
 
@@ -126,14 +130,29 @@ export function About() {
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {service_areas.map((city, i) => (
-              <span
-                key={city}
-                className="bg-white border border-orange-200 text-stone-700 px-5 py-2.5 rounded-full text-sm shadow-sm hover:border-orange-400 hover:text-orange-600 transition-colors cursor-default"
-                style={{ fontFamily: "'Lato', sans-serif", fontWeight: 500 }}
+              <div
+                key={`${city}-${i}`}
+                className="relative"
+                data-reorderable="service_areas"
+                data-reorder-index={i}
               >
-                📍 <span data-content-key={`service_areas.${i}`}>{city}</span>
-              </span>
+                <span
+                  className="block bg-white border border-orange-200 text-stone-700 px-5 py-2.5 rounded-full text-sm shadow-sm hover:border-orange-400 hover:text-orange-600 transition-colors cursor-default"
+                  style={{ fontFamily: "'Lato', sans-serif", fontWeight: 500 }}
+                >
+                  📍 <span data-content-key={`service_areas.${i}`}>{city}</span>
+                </span>
+              </div>
             ))}
+            {isPreview && (
+              <button
+                className="border-2 border-dashed border-orange-200 text-orange-400 px-5 py-2.5 rounded-full text-sm font-semibold hover:border-orange-400 hover:bg-orange-50 transition-all"
+                style={{ fontFamily: "'Lato', sans-serif" }}
+                onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'service_areas' }, '*')}
+              >
+                + Add City
+              </button>
+            )}
           </div>
         </motion.div>
       </div>

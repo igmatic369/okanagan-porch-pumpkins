@@ -4,6 +4,10 @@ import { ChevronDown } from "lucide-react";
 import { Link } from "react-router";
 import { useContent } from "../hooks/useContent";
 
+const isPreview =
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("preview") === "true";
+
 export function FAQ() {
   const content = useContent();
   const { faq } = content;
@@ -61,11 +65,13 @@ export function FAQ() {
           {faq.questions.map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              initial={isPreview ? false : { opacity: 0, y: 20 }}
+              whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+              viewport={isPreview ? undefined : { once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className={`border rounded-2xl overflow-hidden transition-all duration-200 ${
+              data-reorderable="faq.questions"
+              data-reorder-index={i}
+              className={`relative border rounded-2xl overflow-hidden transition-all duration-200 ${
                 openIndex === i
                   ? "border-orange-400 shadow-md"
                   : "border-stone-200 hover:border-orange-300"
@@ -113,6 +119,17 @@ export function FAQ() {
             </motion.div>
           ))}
         </div>
+
+        {isPreview && (
+          <div className="flex justify-center mt-6">
+            <button
+              className="border-2 border-dashed border-stone-300 rounded-2xl px-8 py-4 text-stone-400 font-semibold hover:border-orange-400 hover:text-orange-500 hover:bg-orange-50 transition-all"
+              onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'faq.questions' }, '*')}
+            >
+              + Add Question
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

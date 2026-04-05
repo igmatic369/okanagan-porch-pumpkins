@@ -93,6 +93,17 @@ export function Gallery() {
           ))}
         </div>
 
+        {isPreview && (
+          <div className="flex justify-center mt-4 mb-2">
+            <button
+              className="border-2 border-dashed border-stone-300 rounded-2xl px-8 py-4 text-stone-400 font-semibold hover:border-orange-400 hover:text-orange-500 hover:bg-orange-50 transition-all"
+              onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'gallery.photos' }, '*')}
+            >
+              + Add Photo
+            </button>
+          </div>
+        )}
+
         {/* Lightbox — only in non-preview mode */}
         {!isPreview && lightboxImg && (
           <div
