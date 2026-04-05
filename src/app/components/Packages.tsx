@@ -146,6 +146,7 @@ export function Packages() {
                     src={addon.image}
                     alt={addon.name}
                     className="w-full h-full object-cover"
+                    data-content-key={`addons.${i}.image`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                   <span
@@ -251,6 +252,7 @@ function PackageCard({
           src={pkg.image}
           alt={pkg.name}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          data-content-key={`packages.${index}.image`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
