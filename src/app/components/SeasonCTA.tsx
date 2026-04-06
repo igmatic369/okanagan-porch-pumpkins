@@ -2,6 +2,8 @@ import { motion } from "motion/react";
 import { Link } from "react-router";
 import { useContent } from "../hooks/useContent";
 
+const ctaImage = "https://images.unsplash.com/photo-1603055971132-fbf2b0c2cd47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwcGF0Y2glMjBmYXJtJTIwcGlja2luZ3xlbnwxfHx8fDE3NzQ3Mzk1NTF8MA&ixlib=rb-4.1.0&q=80&w=1080"
+
 export function SeasonCTA() {
   const content = useContent();
   const { cta_banner } = content;
@@ -11,8 +13,7 @@ export function SeasonCTA() {
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${cta_banner.background_image})` }}
-        data-content-key="cta_banner.background_image"
+        style={{ backgroundImage: `url(${cta_banner.background_image || ctaImage})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/75 to-stone-950/60" />
 

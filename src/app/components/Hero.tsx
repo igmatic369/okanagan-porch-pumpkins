@@ -3,6 +3,8 @@ import { ChevronDown } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 import { useContent } from "../hooks/useContent";
 
+const heroImage = "https://images.unsplash.com/photo-1760800327755-0b680db1cb4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2lucyUyMG9uJTIwcG9yY2glMjBhdXR1bW4lMjBkZWNvcmF0aW9ufGVufDF8fHx8MTc3NDczOTU0NXww&ixlib=rb-4.1.0&q=80&w=1080"
+
 export function Hero() {
   const navigate = useNavigate();
   const content = useContent();
@@ -15,8 +17,7 @@ export function Hero() {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${content.hero.background_image})` }}
-        data-content-key="hero.background_image"
+        style={{ backgroundImage: `url(${content.hero.background_image || heroImage})` }}
       />
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-stone-950/70 via-stone-900/50 to-stone-950/80" />
