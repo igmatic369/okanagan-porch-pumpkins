@@ -9,7 +9,7 @@
     "background_image": "https://images.unsplash.com/photo-1760800327755-0b680db1cb4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2lucyUyMG9uJTIwcG9yY2glMjBhdXR1bW4lMjBkZWNvcmF0aW9ufGVufDF8fHx8MTc3NDczOTU0NXww&ixlib=rb-4.1.0&q=80&w=1080"
   },
   "announcement": {
-    "text": "🍁 Fall 2026 orders are now open! Delivery begins September 21st — spots fill up fast! Reserve yours today → 🍁"
+    "text": "🍁 Fall 2026 orders are now open! Delivery begins September 21st — spots fill up fast! Reserve yours today🍁"
   },
   "how_it_works": {
     "eyebrow": "Simple & Stress-Free",
@@ -314,9 +314,18 @@
     "tagline": "Bringing the magic of fall to your front door.",
     "description": "Locally owned & operated in the beautiful Okanagan Valley.\n\n",
     "contact_items": [
-      { "type": "email", "label": "info@okanaganporchpumpkins.ca" },
-      { "type": "phone", "label": "(250) 708-2604" },
-      { "type": "location", "label": "Okanagan Valley, BC" }
+      {
+        "type": "email",
+        "label": "info@okanaganporchpumpkins.ca"
+      },
+      {
+        "type": "phone",
+        "label": "(250) 708-2604"
+      },
+      {
+        "type": "location",
+        "label": "Okanagan Valley, BC"
+      }
     ],
     "about_paragraphs": [
       "Okanagan Porch Pumpkins started as a simple idea: why should decorating your porch for fall be stressful? We're a local family business right here in the Okanagan Valley — and like you, we adore this region's spectacular autumn season.",
