@@ -12,6 +12,7 @@ export function SeasonCTA() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${cta_banner.background_image})` }}
+        data-content-key="cta_banner.background_image"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/75 to-stone-950/60" />
 

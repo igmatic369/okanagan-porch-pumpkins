@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
 import { useContent } from "../hooks/useContent";
+import { getContactIcon, CONTACT_TYPES } from "../lib/contactIcons";
 
 export function OrderContact() {
   const content = useContent();
@@ -75,27 +76,29 @@ export function OrderContact() {
 
             {/* Contact Info */}
             <div className="space-y-5">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-stone-800 flex items-center justify-center text-xl flex-shrink-0">📧</div>
-                <div>
-                  <div className="text-stone-400 text-xs uppercase tracking-wider" style={{ fontFamily: "'Lato', sans-serif" }}>Email</div>
-                  <div data-content-key="business.email" className="text-amber-100 font-medium" style={{ fontFamily: "'Lato', sans-serif" }}>{business.email}</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-stone-800 flex items-center justify-center text-xl flex-shrink-0">📱</div>
-                <div>
-                  <div className="text-stone-400 text-xs uppercase tracking-wider" style={{ fontFamily: "'Lato', sans-serif" }}>Phone / Text</div>
-                  <div data-content-key="business.phone_display" className="text-amber-100 font-medium" style={{ fontFamily: "'Lato', sans-serif" }}>{business.phone_display}</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-stone-800 flex items-center justify-center text-xl flex-shrink-0">📍</div>
-                <div>
-                  <div className="text-stone-400 text-xs uppercase tracking-wider" style={{ fontFamily: "'Lato', sans-serif" }}>Service Area</div>
-                  <div data-content-key="business.service_area" className="text-amber-100 font-medium" style={{ fontFamily: "'Lato', sans-serif" }}>{business.service_area}</div>
-                </div>
-              </div>
+              {(business.contact_items || []).map((item: { type: string; label: string }, i: number) => {
+                const Icon = getContactIcon(item.type)
+                const typeLabel = CONTACT_TYPES[item.type as keyof typeof CONTACT_TYPES]?.label ?? item.type
+                return (
+                  <div key={i} className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-stone-800 flex items-center justify-center flex-shrink-0">
+                      <Icon size={20} className="text-orange-400" />
+                    </div>
+                    <div>
+                      <div className="text-stone-400 text-xs uppercase tracking-wider" style={{ fontFamily: "'Lato', sans-serif" }}>
+                        {typeLabel}
+                      </div>
+                      <div
+                        data-content-key={`business.contact_items.${i}.label`}
+                        className="text-amber-100 font-medium"
+                        style={{ fontFamily: "'Lato', sans-serif" }}
+                      >
+                        {item.label}
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
 
             {/* Season Banner */}

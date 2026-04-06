@@ -74,14 +74,16 @@ export function About() {
           >
             <div className="relative h-[450px]">
               <img
-                src={farmImage}
+                src={about.image_main || farmImage}
                 alt="Local pumpkin farm"
                 className="absolute top-0 right-0 w-4/5 h-4/5 object-cover rounded-2xl shadow-2xl"
+                data-content-key="about.image_main"
               />
               <img
-                src={okanaganImage}
+                src={about.image_secondary || okanaganImage}
                 alt="Okanagan Valley"
                 className="absolute bottom-0 left-0 w-3/5 h-3/5 object-cover rounded-2xl shadow-xl border-4 border-white"
+                data-content-key="about.image_secondary"
               />
               {/* Badge */}
               {about.locally_sourced?.replace(/\u00A0/g, '').trim() && (

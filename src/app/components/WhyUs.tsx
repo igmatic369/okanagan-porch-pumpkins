@@ -1,9 +1,11 @@
 import { motion } from "motion/react";
-import { MapPin, Leaf, Smile, RefreshCw, Heart, Shield } from "lucide-react";
+import { MapPin, Leaf, Smile, RefreshCw, Heart, Shield, Star, Truck, Home, ShoppingBag, Award, Sun, Zap, Clock, Gift } from "lucide-react";
 import { useContent } from "../hooks/useContent";
 
-// TODO: add icon picker in preview editor (select from featureIcons list per feature)
-const featureIcons = [MapPin, Leaf, Smile, RefreshCw, Heart, Shield];
+const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+  MapPin, Leaf, Smile, RefreshCw, Heart, Shield, Star, Truck, Home,
+  ShoppingBag, Award, Sun, Zap, Clock, Gift,
+};
 
 const isPreview =
   typeof window !== "undefined" &&
@@ -67,7 +69,7 @@ export function WhyUs() {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {why_choose_us.features.map((feature, i) => {
-            const Icon = featureIcons[i % featureIcons.length]
+            const Icon = iconMap[feature.icon] || MapPin
             return (
               <motion.div
                 key={i}

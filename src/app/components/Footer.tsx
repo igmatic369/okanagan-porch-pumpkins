@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { useContent } from "../hooks/useContent";
+import { getContactIcon, CONTACT_TYPES } from "../lib/contactIcons";
 
 const isPreview =
   typeof window !== "undefined" &&
@@ -18,6 +19,7 @@ const quickLinks = [
 export function Footer() {
   const content = useContent();
   const { business, season, service_areas, footer } = content;
+  const contactItems = business.contact_items || [];
 
   return (
     <footer className="bg-stone-950 text-stone-400">
@@ -82,8 +84,9 @@ export function Footer() {
             <h4
               className="text-amber-100 mb-4"
               style={{ fontFamily: "'Playfair Display', serif", fontSize: "1rem", fontWeight: 600 }}
+              data-content-key="footer.service_areas_heading"
             >
-              Service Areas
+              {footer.service_areas_heading}
             </h4>
             <ul className="space-y-2">
               {service_areas.map((city, i) => (
@@ -118,72 +121,37 @@ export function Footer() {
             <h4
               className="text-amber-100 mb-4"
               style={{ fontFamily: "'Playfair Display', serif", fontSize: "1rem", fontWeight: 600 }}
+              data-content-key="footer.contact_heading"
             >
-              Get In Touch
+              {footer.contact_heading}
             </h4>
-            {/* Contact — fixed fields + reorderable social_links in one list */}
             <ul className="space-y-3">
-              <li className="flex items-start gap-2">
-                <span className="text-sm mt-0.5">📧</span>
-                <span
-                  data-content-key="business.email"
-                  className="text-stone-500 text-sm"
-                  style={{ fontFamily: "'Lato', sans-serif" }}
-                >
-                  {business.email}
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-sm mt-0.5">📱</span>
-                <span
-                  data-content-key="business.phone_display"
-                  className="text-stone-500 text-sm"
-                  style={{ fontFamily: "'Lato', sans-serif" }}
-                >
-                  {business.phone_display}
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-sm mt-0.5">📍</span>
-                <span
-                  data-content-key="business.service_area"
-                  className="text-stone-500 text-sm"
-                  style={{ fontFamily: "'Lato', sans-serif" }}
-                >
-                  {business.service_area}
-                </span>
-              </li>
-              {business.social_links?.map((link: { platform: string; url: string }, i: number) => (
-                <li
-                  key={i}
-                  className="relative flex items-start gap-2"
-                  data-reorderable="business.social_links"
-                  data-reorder-index={i}
-                >
-                  <span
-                    className="text-stone-500 text-sm font-medium"
-                    style={{ fontFamily: "'Lato', sans-serif" }}
-                    data-content-key={`business.social_links.${i}.platform`}
+              {contactItems.map((item: { type: string; label: string }, i: number) => {
+                const Icon = getContactIcon(item.type)
+                return (
+                  <li
+                    key={i}
+                    className="relative flex items-start gap-2"
+                    data-reorderable="business.contact_items"
+                    data-reorder-index={i}
                   >
-                    {link.platform}
-                  </span>
-                  {link.url && (
+                    <Icon size={14} className="text-stone-500 mt-0.5 flex-shrink-0" />
                     <span
-                      className="text-stone-500 text-sm truncate"
+                      data-content-key={`business.contact_items.${i}.label`}
+                      className="text-stone-500 text-sm"
                       style={{ fontFamily: "'Lato', sans-serif" }}
-                      data-content-key={`business.social_links.${i}.url`}
                     >
-                      {link.url}
+                      {item.label}
                     </span>
-                  )}
-                </li>
-              ))}
+                  </li>
+                )
+              })}
               {isPreview && (
                 <li>
                   <button
+                    data-contact-picker
                     className="text-stone-600 text-sm hover:text-orange-400 transition-colors border border-dashed border-stone-700 rounded px-2 py-1"
                     style={{ fontFamily: "'Lato', sans-serif" }}
-                    onClick={() => window.parent.postMessage({ type: 'preview-add-item', arrayPath: 'business.social_links' }, '*')}
                   >
                     + Add Contact Info
                   </button>
@@ -196,8 +164,9 @@ export function Footer() {
               <p
                 className="text-stone-600 text-xs uppercase tracking-wider mb-2"
                 style={{ fontFamily: "'Lato', sans-serif" }}
+                data-content-key="footer.season_info_heading"
               >
-                Season Info
+                {footer.season_info_heading}
               </p>
               <div className="space-y-2">
                 <p

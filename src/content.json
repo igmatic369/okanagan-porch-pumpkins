@@ -53,26 +53,32 @@
     "subtitle": "We're more than just a pumpkin delivery service — we're your local Okanagan fall specialists.",
     "features": [
       {
+        "icon": "MapPin",
         "title": "Proudly Local",
         "description": "We're an Okanagan-based business through and through. Every pumpkin is sourced from local Okanagan farms, supporting our community and keeping your display fresh."
       },
       {
+        "icon": "Leaf",
         "title": "Farm-Fresh Quality",
         "description": "Our pumpkins are selected for size, colour, and quality. No grocery store pumpkins here — only the finest varieties hand-picked from local growers."
       },
       {
+        "icon": "Smile",
         "title": "White-Glove Service",
         "description": "We do all the work — delivery, styling, and pickup. Our team arrives at a scheduled time and creates a display you'll love. Just sit back and enjoy!"
       },
       {
+        "icon": "RefreshCw",
         "title": "End-of-Season Pickup",
         "description": "When the season is over, we come back and remove everything. Composted responsibly — because we love the Okanagan as much as you do."
       },
       {
+        "icon": "Heart",
         "title": "Customizable Displays",
         "description": "Want something specific? We love a challenge! Tell us your vision and we'll create a custom arrangement that perfectly matches your home's style."
       },
       {
+        "icon": "Shield",
         "title": "Satisfaction Guaranteed",
         "description": "We stand behind our work 100%. If you're not happy with your display, we'll make it right — no questions asked."
       }
@@ -307,18 +313,19 @@
   },
   "business": {
     "name": "Okanagan Porch Pumpkins",
-    "email": "info@okanaganporchpumpkins.ca",
     "tagline": "Bringing the magic of fall to your front door.",
     "description": "Locally owned & operated in the beautiful Okanagan Valley.\n\n",
-    "service_area": "Okanagan Valley, BC",
-    "phone_display": "(647) 708-2604",
+    "contact_items": [
+      { "type": "email", "label": "info@okanaganporchpumpkins.ca" },
+      { "type": "phone", "label": "(250) 708-2604" },
+      { "type": "location", "label": "Okanagan Valley, BC" }
+    ],
     "about_paragraphs": [
       "Okanagan Porch Pumpkins started as a simple idea: why should decorating your porch for fall be stressful? We're a local family business right here in the Okanagan Valley — and like you, we adore this region's spectacular autumn season.",
       "Every fall, the Okanagan transforms into a canvas of gold, amber, and deep red. We thought — what better way to celebrate that magic than by bringing the most beautiful pumpkins in the valley right to your front door?",
       "We partner exclusively with local Okanagan farms to source the freshest, most gorgeous pumpkins of the season. By choosing us, you're not just getting a beautiful porch — you're supporting local farmers and keeping our community thriving."
     ],
-    "hero_description": "Okanagan Porch Pumpkins delivers stunning, professionally styled pumpkin arrangements right to your doorstep — so you can enjoy the beauty of the season without the hassle.",
-    "social_links": []
+    "hero_description": "Okanagan Porch Pumpkins delivers stunning, professionally styled pumpkin arrangements right to your doorstep — so you can enjoy the beauty of the season without the hassle."
   },
   "packages": [
     {
@@ -562,6 +569,9 @@
     "October 19–21 (last window)"
   ],
   "footer": {
+    "contact_heading": "Get In Touch",
+    "service_areas_heading": "Service Areas",
+    "season_info_heading": "Season Info",
     "copyright": "Okanagan Porch Pumpkins. All rights reserved.",
     "privacy_link": "Privacy Policy",
     "terms_link": "Terms of Service",

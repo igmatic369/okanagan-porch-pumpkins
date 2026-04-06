@@ -16,6 +16,7 @@ export function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${content.hero.background_image})` }}
+        data-content-key="hero.background_image"
       />
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-stone-950/70 via-stone-900/50 to-stone-950/80" />
