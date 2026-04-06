@@ -5,6 +5,32 @@ import { useContent } from "../hooks/useContent";
 
 const heroImage = "https://images.unsplash.com/photo-1760800327755-0b680db1cb4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2lucyUyMG9uJTIwcG9yY2glMjBhdXR1bW4lMjBkZWNvcmF0aW9ufGVufDF8fHx8MTc3NDczOTU0NXww&ixlib=rb-4.1.0&q=80&w=1080"
 
+const isPreview =
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("preview") === "true";
+
+function openBgUpload(contentKey: string) {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = "image/*";
+  input.onchange = () => {
+    const file = input.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      window.parent.postMessage({
+        type: "preview-image-upload",
+        fileData: ev.target?.result,
+        fileName: file.name,
+        mimeType: file.type,
+        contentKey,
+      }, "*");
+    };
+    reader.readAsDataURL(file);
+  };
+  input.click();
+}
+
 export function Hero() {
   const navigate = useNavigate();
   const content = useContent();
@@ -21,6 +47,16 @@ export function Hero() {
       />
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-stone-950/70 via-stone-900/50 to-stone-950/80" />
+
+      {isPreview && (
+        <button
+          onClick={() => openBgUpload("hero.background_image")}
+          className="absolute top-20 right-4 z-20 bg-black/60 hover:bg-black/80 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer"
+          style={{ fontFamily: "'Lato', sans-serif" }}
+        >
+          📷 Change Background
+        </button>
+      )}
 
       {/* Decorative Leaf Pattern */}
       <div className="absolute inset-0 opacity-10">

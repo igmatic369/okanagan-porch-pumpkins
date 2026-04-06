@@ -74,15 +74,51 @@ export function About() {
           >
             <div className="relative h-[450px]">
               <img
-                src={farmImage}
+                src={about.image_main || farmImage}
                 alt="Local pumpkin farm"
                 className="absolute top-0 right-0 w-4/5 h-4/5 object-cover rounded-2xl shadow-2xl"
               />
               <img
-                src={okanaganImage}
+                src={about.image_secondary || okanaganImage}
                 alt="Okanagan Valley"
                 className="absolute bottom-0 left-0 w-3/5 h-3/5 object-cover rounded-2xl shadow-xl border-4 border-white"
               />
+              {isPreview && (
+                <>
+                  <button
+                    onClick={() => {
+                      const input = document.createElement("input");
+                      input.type = "file"; input.accept = "image/*";
+                      input.onchange = () => {
+                        const file = input.files?.[0]; if (!file) return;
+                        const reader = new FileReader();
+                        reader.onload = (ev) => window.parent.postMessage({ type: "preview-image-upload", fileData: ev.target?.result, fileName: file.name, mimeType: file.type, contentKey: "about.image_main" }, "*");
+                        reader.readAsDataURL(file);
+                      }; input.click();
+                    }}
+                    className="absolute top-2 right-2 z-10 bg-black/60 hover:bg-black/80 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
+                    style={{ fontFamily: "'Lato', sans-serif" }}
+                  >
+                    📷
+                  </button>
+                  <button
+                    onClick={() => {
+                      const input = document.createElement("input");
+                      input.type = "file"; input.accept = "image/*";
+                      input.onchange = () => {
+                        const file = input.files?.[0]; if (!file) return;
+                        const reader = new FileReader();
+                        reader.onload = (ev) => window.parent.postMessage({ type: "preview-image-upload", fileData: ev.target?.result, fileName: file.name, mimeType: file.type, contentKey: "about.image_secondary" }, "*");
+                        reader.readAsDataURL(file);
+                      }; input.click();
+                    }}
+                    className="absolute bottom-2 left-2 z-10 bg-black/60 hover:bg-black/80 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
+                    style={{ fontFamily: "'Lato', sans-serif" }}
+                  >
+                    📷
+                  </button>
+                </>
+              )}
               {/* Badge */}
               {about.locally_sourced?.replace(/\u00A0/g, '').trim() && (
                 <div

@@ -4,6 +4,10 @@ import { useContent } from "../hooks/useContent";
 
 const ctaImage = "https://images.unsplash.com/photo-1603055971132-fbf2b0c2cd47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdW1wa2luJTIwcGF0Y2glMjBmYXJtJTIwcGlja2luZ3xlbnwxfHx8fDE3NzQ3Mzk1NTF8MA&ixlib=rb-4.1.0&q=80&w=1080"
 
+const isPreview =
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("preview") === "true";
+
 export function SeasonCTA() {
   const content = useContent();
   const { cta_banner } = content;
@@ -16,6 +20,36 @@ export function SeasonCTA() {
         style={{ backgroundImage: `url(${cta_banner.background_image || ctaImage})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/75 to-stone-950/60" />
+
+      {isPreview && (
+        <button
+          onClick={() => {
+            const input = document.createElement("input");
+            input.type = "file";
+            input.accept = "image/*";
+            input.onchange = () => {
+              const file = input.files?.[0];
+              if (!file) return;
+              const reader = new FileReader();
+              reader.onload = (ev) => {
+                window.parent.postMessage({
+                  type: "preview-image-upload",
+                  fileData: ev.target?.result,
+                  fileName: file.name,
+                  mimeType: file.type,
+                  contentKey: "cta_banner.background_image",
+                }, "*");
+              };
+              reader.readAsDataURL(file);
+            };
+            input.click();
+          }}
+          className="absolute top-4 right-4 z-20 bg-black/60 hover:bg-black/80 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer"
+          style={{ fontFamily: "'Lato', sans-serif" }}
+        >
+          📷 Change Background
+        </button>
+      )}
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
