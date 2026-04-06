@@ -51,7 +51,7 @@ export function Hero() {
       {isPreview && (
         <button
           onClick={() => openBgUpload("hero.background_image")}
-          className="absolute top-20 right-4 z-20 bg-black/60 hover:bg-black/80 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer"
+          className="absolute top-28 right-4 z-20 bg-black/60 hover:bg-black/80 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer"
           style={{ fontFamily: "'Lato', sans-serif" }}
         >
           📷 Change Background
