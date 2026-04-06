@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router";
+import { useContent } from "../hooks/useContent";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -16,6 +17,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { announcement } = useContent();
   const location = useLocation();
 
   useEffect(() => {
@@ -34,19 +36,11 @@ export function Navbar() {
       {/* Announcement Banner */}
       <div className="bg-orange-600 text-white py-2.5 px-4 text-center">
         <p
+          data-content-key="announcement.text"
           className="text-sm"
           style={{ fontFamily: "'Lato', sans-serif" }}
         >
-          🍁{" "}
-          <strong>Fall 2026 orders are now open!</strong>{" "}
-          Delivery begins September 21st — spots fill up fast!{" "}
-          <button
-            onClick={() => navigate("/packages")}
-            className="underline hover:text-amber-200 transition-colors ml-1 font-semibold bg-transparent border-none cursor-pointer"
-          >
-            Reserve yours today →
-          </button>
-          {" "}🍁
+          {announcement.text}
         </p>
       </div>
 
